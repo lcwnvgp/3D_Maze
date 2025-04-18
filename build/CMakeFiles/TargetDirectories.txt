@@ -1,0 +1,3 @@
+D:/vscode/final/build/CMakeFiles/VulkanMazeGame.dir
+D:/vscode/final/build/CMakeFiles/edit_cache.dir
+D:/vscode/final/build/CMakeFiles/rebuild_cache.dir
