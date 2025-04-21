@@ -4,10 +4,10 @@
 #include <iostream> 
 
 Camera::Camera()
-    : position(0.0f, 0.0f, 10.0f),
+    : position(-25.8f, 17.45f, -36.85f),
       up(0.0f, 1.0f, 0.0f), 
-      pitch(0.0f), 
-      yaw(-90.0f), 
+      pitch(-21.2f),
+      yaw(55.0f),      
       movementSpeed(2.5f),
       mouseSensitivity(0.1f),
       firstMouse(true),
@@ -19,13 +19,13 @@ Camera::Camera()
       m_isRightMouseButtonDown(false),
       m_panSpeed(0.005f), 
       m_zoomSpeed(0.05f), 
-      m_orbitSpeed(0.1f), 
+      m_orbitSpeed(0.2f),
       m_orbitTarget(0.0f, 0.0f, 0.0f)
 {
     updateVectors();
     m_distanceToTarget = glm::length(position - m_orbitTarget);
     if (m_distanceToTarget < 0.001f) {
-         m_distanceToTarget = 5.0f; 
+         m_distanceToTarget = 10.0f;
          position = m_orbitTarget - front * m_distanceToTarget; 
     }
     updateViewMatrix();
@@ -76,11 +76,15 @@ void Camera::handleMouseScroll(double yoffset) {
 }
 void Camera::performOrbit(float xoffset, float yoffset) {
     float yawAngleDelta = xoffset * m_orbitSpeed;
-    float pitchAngleDelta = -yoffset * m_orbitSpeed; 
+    float pitchAngleDelta = -yoffset * m_orbitSpeed;
     yaw += yawAngleDelta;
     pitch += pitchAngleDelta;
-    if (pitch > 89.0f) pitch = 89.0f;
-    if (pitch < -89.0f) pitch = -89.0f;
+    
+    if (pitch > 89.0f)
+        pitch = 89.0f;
+    if (pitch < -89.0f)
+        pitch = -89.0f;
+        
     updateVectors();
     position = m_orbitTarget - front * m_distanceToTarget;
     updateViewMatrix();
@@ -114,6 +118,7 @@ void Camera::setUp(const glm::vec3& u) {
 
 void Camera::setPerspective(float fov, float aspect, float near, float far) {
     projectionMatrix = glm::perspective(glm::radians(fov), aspect, near, far);
+    projectionMatrix[1][1] *= -1;
 }
 
 void Camera::moveForward(float distance) {
@@ -155,9 +160,6 @@ void Camera::moveDown(float distance) {
 void Camera::rotate(float p, float y) {
     pitch += p;
     yaw += y;
-    if (pitch > 89.0f) pitch = 89.0f;
-    if (pitch < -89.0f) pitch = -89.0f;
-
     updateVectors();
     position = m_orbitTarget - front * m_distanceToTarget;
     updateViewMatrix();
@@ -169,12 +171,15 @@ void Camera::updateVectors() {
     newFront.y = sin(glm::radians(pitch));
     newFront.z = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
     front = glm::normalize(newFront);
-    right = glm::normalize(glm::cross(front, glm::vec3(0.0f, 1.0f, 0.0f))); 
-    up = glm::normalize(glm::cross(right, front)); 
+    right = glm::normalize(glm::cross(front, glm::vec3(0.0f, 1.0f, 0.0f)));
+    up = glm::normalize(glm::cross(right, front));
 }
 
 void Camera::updateViewMatrix() {
-    viewMatrix = glm::lookAt(position, m_orbitTarget, up); 
+    viewMatrix = glm::lookAt(position, position + front, up);
+    // std::cout << "Camera Position: (" << position.x << ", " << position.y << ", " << position.z << ")" << std::endl;
+    // std::cout << "Pitch: " << pitch << " Yaw: " << yaw << std::endl;
+    // std::cout << "-------------------" << std::endl;
 }
 
 void Camera::update(float deltaTime) {
