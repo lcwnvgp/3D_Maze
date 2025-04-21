@@ -43,6 +43,8 @@ public:
 
     void updateUniformBuffer(const UniformBufferObject& ubo);
 
+    void pushModelMatrix(VkCommandBuffer commandBuffer, const glm::mat4& modelMatrix);
+
 private:
     void createInstance();
     void createSurface();

@@ -19,7 +19,7 @@ echo Creating shaders directory if it doesn't exist...
 if not exist "shaders" mkdir shaders
 
 echo Compiling vertex shader...
-"%VULKAN_SDK%\Bin\glslc.exe" shaders/shader.vert -o shaders/vert.spv
+"%VULKAN_SDK%\Bin\glslc.exe" shaders/shader.vert -o shaders/shader.vert.spv
 if %ERRORLEVEL% NEQ 0 (
     echo Error: Failed to compile vertex shader!
     pause
@@ -27,7 +27,23 @@ if %ERRORLEVEL% NEQ 0 (
 )
 
 echo Compiling fragment shader...
-"%VULKAN_SDK%\Bin\glslc.exe" shaders/shader.frag -o shaders/frag.spv
+"%VULKAN_SDK%\Bin\glslc.exe" shaders/shader.frag -o shaders/shader.frag.spv
+if %ERRORLEVEL% NEQ 0 (
+    echo Error: Failed to compile fragment shader!
+    pause
+    exit /b 1
+)
+
+echo Compiling fragment shader...
+"%VULKAN_SDK%\Bin\glslc.exe" shaders/shadow.vert -o shaders/shadow.veet.spv
+if %ERRORLEVEL% NEQ 0 (
+    echo Error: Failed to compile fragment shader!
+    pause
+    exit /b 1
+)
+
+echo Compiling fragment shader...
+"%VULKAN_SDK%\Bin\glslc.exe" shaders/shadow.frag -o shaders/shadow.frag.spv
 if %ERRORLEVEL% NEQ 0 (
     echo Error: Failed to compile fragment shader!
     pause
@@ -35,14 +51,30 @@ if %ERRORLEVEL% NEQ 0 (
 )
 
 echo Verifying compiled shaders...
-if not exist "shaders\vert.spv" (
-    echo Error: vert.spv was not created!
+if not exist "shaders\shader.vert.spv" (
+    echo Error: shader.vert.spv was not created!
     pause
     exit /b 1
 )
 
-if not exist "shaders\frag.spv" (
-    echo Error: frag.spv was not created!
+if not exist "shaders\shader.frag.spv" (
+    echo Error: shader.frag.spv was not created!
+    pause
+    exit /b 1
+)
+
+echo Compiling shadow vertex shader...
+"%VULKAN_SDK%\Bin\glslc.exe" shaders/shadow.vert -o shaders/shadow.vert.spv
+if %ERRORLEVEL% NEQ 0 (
+    echo Error: Failed to compile shadow vertex shader!
+    pause
+    exit /b 1
+)
+
+echo Compiling shadow fragment shader...    
+"%VULKAN_SDK%\Bin\glslc.exe" shaders/shadow.frag -o shaders/shadow.frag.spv
+if %ERRORLEVEL% NEQ 0 (
+    echo Error: Failed to compile shadow fragment shader!
     pause
     exit /b 1
 )

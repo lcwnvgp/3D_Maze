@@ -460,9 +460,7 @@ void VulkanContext::createDescriptorPool() {
     }
 }
 
-void VulkanContext::createDescriptorSets() {
-    std::cout << "Creating descriptor sets..." << std::endl;
-    
+void VulkanContext::createDescriptorSets() {  
     if (device == VK_NULL_HANDLE) {
         throw std::runtime_error("Device not initialized!");
     }
@@ -550,8 +548,8 @@ void VulkanContext::createGraphicsPipeline() {
         return buffer;
     };
 
-    std::string vertPath = R"(D:\\vscode\\final\\shaders\\vert.spv)";
-    std::string fragPath = R"(D:\\vscode\\final\\shaders\\frag.spv)";
+    std::string vertPath = R"(D:\\vscode\\final\\build\\shaders\\shader.vert.spv)";
+    std::string fragPath = R"(D:\\vscode\\final\\build\\shaders\\shader.frag.spv)";
 
     std::vector<char> vertShaderCode = readShaderFile(vertPath);
     std::vector<char> fragShaderCode = readShaderFile(fragPath);
@@ -657,12 +655,17 @@ void VulkanContext::createGraphicsPipeline() {
     colorBlending.attachmentCount = 1;
     colorBlending.pAttachments = &colorBlendAttachment;
 
+    VkPushConstantRange pushConstantRange{};
+    pushConstantRange.stageFlags = VK_SHADER_STAGE_VERTEX_BIT; 
+    pushConstantRange.offset = 0;                             
+    pushConstantRange.size = sizeof(glm::mat4);
+
     VkPipelineLayoutCreateInfo pipelineLayoutInfo{};
     pipelineLayoutInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO;
     pipelineLayoutInfo.setLayoutCount = 1;
     pipelineLayoutInfo.pSetLayouts = &descriptorSetLayout;
-    pipelineLayoutInfo.pushConstantRangeCount = 0;
-    pipelineLayoutInfo.pPushConstantRanges = nullptr;
+    pipelineLayoutInfo.pushConstantRangeCount = 1;
+    pipelineLayoutInfo.pPushConstantRanges = &pushConstantRange;;
 
     if (vkCreatePipelineLayout(device, &pipelineLayoutInfo, nullptr, &pipelineLayout) != VK_SUCCESS) {
         throw std::runtime_error("failed to create pipeline layout!");
@@ -966,3 +969,13 @@ void VulkanContext::updateUniformBuffer(const UniformBufferObject& ubo) {
     memcpy(uniformBuffersMapped[currentFrame], &ubo, sizeof(ubo));
 }
 
+void VulkanContext::pushModelMatrix(VkCommandBuffer commandBuffer, const glm::mat4& modelMatrix) {
+    vkCmdPushConstants(
+        commandBuffer,
+        pipelineLayout, 
+        VK_SHADER_STAGE_VERTEX_BIT, 
+        0, 
+        sizeof(glm::mat4), 
+        &modelMatrix
+    );
+}
