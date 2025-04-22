@@ -19,7 +19,7 @@ layout(binding = 1) uniform LightUniformBufferObject {
 
 void main() {
     vec3 normal = normalize(fragNormal);
-    vec3 lightDir = normalize(light.lightPos.xyz - fragPos);
+    vec3 lightDir = normalize(fragPos - light.lightPos.xyz);
     float diff = max(dot(normal, lightDir), 0.0);
     vec3 diffuse = diff * light.lightColor.xyz;
     vec3 ambient = light.ambientStrength * light.lightColor.xyz;
