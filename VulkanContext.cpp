@@ -548,8 +548,8 @@ void VulkanContext::createGraphicsPipeline() {
         return buffer;
     };
 
-    std::string vertPath = R"(D:\\vscode\\final\\build\\shaders\\shader.vert.spv)";
-    std::string fragPath = R"(D:\\vscode\\final\\build\\shaders\\shader.frag.spv)";
+    std::string vertPath = "shaders/shader.vert.spv";
+    std::string fragPath = "shaders/shader.frag.spv";
 
     std::vector<char> vertShaderCode = readShaderFile(vertPath);
     std::vector<char> fragShaderCode = readShaderFile(fragPath);

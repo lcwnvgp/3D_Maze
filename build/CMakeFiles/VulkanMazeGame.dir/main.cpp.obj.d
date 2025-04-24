@@ -1,5 +1,6 @@
-CMakeFiles/VulkanMazeGame.dir/main.cpp.obj: D:\vscode\final\main.cpp \
- D:\vscode\final\VulkanContext.h \
+CMakeFiles/VulkanMazeGame.dir/main.cpp.obj: \
+ D:\vscode\CSCI-580-final\main.cpp \
+ D:\vscode\CSCI-580-final\VulkanContext.h \
  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/vulkan/vulkan.h \
  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/vulkan/vk_platform.h \
  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/stddef.h \
@@ -126,7 +127,7 @@ CMakeFiles/VulkanMazeGame.dir/main.cpp.obj: D:\vscode\final\main.cpp \
  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/c++/bits/basic_string.tcc \
  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/c++/array \
  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/c++/compare \
- D:\vscode\final\Types.h \
+ D:\vscode\CSCI-580-final\Types.h \
  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/glm.hpp \
  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/_fixes.hpp \
  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/c++/cmath \
@@ -285,7 +286,7 @@ CMakeFiles/VulkanMazeGame.dir/main.cpp.obj: D:\vscode\final\main.cpp \
  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/type_half.inl \
  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/integer.hpp \
  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/func_integer.inl \
- D:\vscode\final\Model.h D:\vscode\final\Camera.h \
+ D:\vscode\CSCI-580-final\Model.h D:\vscode\CSCI-580-final\Camera.h \
  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/c++/stdexcept \
  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/c++/exception \
  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/c++/bits/exception_ptr.h \

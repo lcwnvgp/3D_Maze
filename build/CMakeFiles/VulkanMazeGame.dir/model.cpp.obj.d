@@ -1,5 +1,6 @@
-CMakeFiles/VulkanMazeGame.dir/model.cpp.obj: D:\vscode\final\model.cpp \
- D:\vscode\final\model.h D:\vscode\final\Types.h \
+CMakeFiles/VulkanMazeGame.dir/model.cpp.obj: \
+ D:\vscode\CSCI-580-final\model.cpp D:\vscode\CSCI-580-final\model.h \
+ D:\vscode\CSCI-580-final\Types.h \
  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/glm.hpp \
  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/_fixes.hpp \
  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/c++/cmath \
@@ -282,7 +283,7 @@ CMakeFiles/VulkanMazeGame.dir/model.cpp.obj: D:\vscode\final\model.cpp \
  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/c++/cerrno \
  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/c++/bits/charconv.h \
  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/c++/bits/basic_string.tcc \
- D:\vscode\final\tiny_obj_loader.h \
+ D:\vscode\CSCI-580-final\tiny_obj_loader.h \
  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/c++/map \
  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/c++/bits/stl_tree.h \
  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/c++/ext/aligned_buffer.h \

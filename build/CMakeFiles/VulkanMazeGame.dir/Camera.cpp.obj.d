@@ -1,5 +1,5 @@
-CMakeFiles/VulkanMazeGame.dir/Camera.cpp.obj: D:\vscode\final\Camera.cpp \
- D:\vscode\final\Camera.h \
+CMakeFiles/VulkanMazeGame.dir/Camera.cpp.obj: \
+ D:\vscode\CSCI-580-final\Camera.cpp D:\vscode\CSCI-580-final\Camera.h \
  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/glm.hpp \
  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/_fixes.hpp \
  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/c++/cmath \

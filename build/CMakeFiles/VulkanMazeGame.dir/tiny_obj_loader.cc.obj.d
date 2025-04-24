@@ -1,5 +1,6 @@
 CMakeFiles/VulkanMazeGame.dir/tiny_obj_loader.cc.obj: \
- D:\vscode\final\tiny_obj_loader.cc D:\vscode\final\tiny_obj_loader.h \
+ D:\vscode\CSCI-580-final\tiny_obj_loader.cc \
+ D:\vscode\CSCI-580-final\tiny_obj_loader.h \
  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/c++/map \
  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/c++/bits/requires_hosted.h \
  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/c++/x86_64-w64-mingw32/bits/c++config.h \

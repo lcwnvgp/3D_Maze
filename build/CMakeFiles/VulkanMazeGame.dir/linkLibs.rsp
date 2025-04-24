@@ -1,1 +1,1 @@
- D:/vscode/final/glfw3.dll "D:/vscode/final/vulkan-1.dll" -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 
+ "D:/vscode/CSCI-580-final/glfw3.dll" "D:/vscode/CSCI-580-final/vulkan-1.dll" -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 

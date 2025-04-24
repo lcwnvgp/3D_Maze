@@ -4,6 +4,7 @@
 #include <stdexcept>
 #include <iostream>
 #include <chrono>
+#include <algorithm>
 #include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -53,8 +54,8 @@ int main() {
         glfwSetScrollCallback(context.getWindow(), scroll_callback);
         glfwSetInputMode(context.getWindow(), GLFW_CURSOR, GLFW_CURSOR_NORMAL);
 
-        std::string mazePath = R"(D:\vscode\final\models\maze.obj)";
-        std::string spherePath = R"(D:\vscode\final\models\sphere.obj)";
+        std::string mazePath = "models/maze.obj";
+        std::string spherePath = "models/sphere.obj";
 
         Model mazeModel(context.getDevice(), context.getPhysicalDevice(),
                     context.getCommandPool(), context.getGraphicsQueue(),
