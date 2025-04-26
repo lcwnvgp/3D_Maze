@@ -46,7 +46,7 @@ struct UniformBufferObject {
 };
 
 struct LightUniformBufferObject {
-    glm::vec3 lightPos;
-    glm::vec3 lightColor;
+    glm::vec4 lightPos;
+    glm::vec4 lightColor;
     float ambientStrength;
 }; 

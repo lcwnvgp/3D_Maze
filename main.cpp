@@ -8,12 +8,21 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
+static bool followMode = false;
+static glm::vec3 spherePos = glm::vec3(0.0f);
+
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods) {
     if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS) {
         glfwSetWindowShouldClose(window, GLFW_TRUE);
     }
+
+    if (key == GLFW_KEY_SPACE && action == GLFW_PRESS) {
+        followMode = !followMode;
+    }
+
     Camera* camera = static_cast<Camera*>(glfwGetWindowUserPointer(window));
-    if (camera) {
+
+    if (camera && !followMode) {
         camera->handleInput(key, action);
     }
 }
@@ -77,6 +86,11 @@ int main() {
             context.beginFrame();
             VkCommandBuffer commandBuffer = context.beginRenderPass();
 
+            glm::vec3 sphereWorldPos(10.0f, 0.0f, 5.0f);
+            glm::mat4 modelMatrix_sphere = glm::translate(glm::mat4(1.0f), sphereWorldPos);
+
+            spherePos = sphereWorldPos;
+
             UniformBufferObject uboFrame{};
 
             int width, height;
@@ -85,7 +99,14 @@ int main() {
                 camera.setPerspective(45.0f, (float)width / (float)height, 0.1f, 1000.0f);
             }
 
-            uboFrame.view = camera.getViewMatrix();
+            if (followMode) {
+                glm::vec3 camOffset(-5,5,0);
+                glm::vec3 camPos = spherePos + camOffset;
+                uboFrame.view = glm::lookAt(camPos, spherePos, {0,1,0});
+            } else {
+                uboFrame.view = camera.getViewMatrix();
+            }
+
             uboFrame.proj = camera.getProjectionMatrix();
 
             context.updateUniformBuffer(uboFrame);
@@ -96,9 +117,7 @@ int main() {
             
             mazeModel.draw(commandBuffer);
 
-            glm::mat4 modelMatrix_sphere = glm::mat4(1.0f);
             context.pushModelMatrix(commandBuffer, modelMatrix_sphere);
-
             sphereModel.draw(commandBuffer);
 
             context.endRenderPass();
