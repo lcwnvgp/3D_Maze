@@ -1,0 +1,5 @@
+# Hashes of file build rules.
+62d86f912f6319403b84fadbe2a282ff CMakeFiles/Shaders
+943eaf046b8446ad0d9fc2bee2f55d8f shaders/closesthit.rchit.spv
+08ed7d21b900321860ec9144cb470d24 shaders/miss.rmiss.spv
+c6bdf4e06896c1d4eac3b050d95d37f1 shaders/raygen.rgen.spv

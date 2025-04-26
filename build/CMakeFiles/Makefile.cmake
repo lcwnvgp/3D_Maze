@@ -20,6 +20,9 @@ set(CMAKE_MAKEFILE_DEPENDS
   "D:/vscode/cmake/share/cmake-3.31/Modules/Compiler/GNU-C.cmake"
   "D:/vscode/cmake/share/cmake-3.31/Modules/Compiler/GNU-CXX.cmake"
   "D:/vscode/cmake/share/cmake-3.31/Modules/Compiler/GNU.cmake"
+  "D:/vscode/cmake/share/cmake-3.31/Modules/FindPackageHandleStandardArgs.cmake"
+  "D:/vscode/cmake/share/cmake-3.31/Modules/FindPackageMessage.cmake"
+  "D:/vscode/cmake/share/cmake-3.31/Modules/FindVulkan.cmake"
   "D:/vscode/cmake/share/cmake-3.31/Modules/Internal/CMakeCLinkerInformation.cmake"
   "D:/vscode/cmake/share/cmake-3.31/Modules/Internal/CMakeCXXLinkerInformation.cmake"
   "D:/vscode/cmake/share/cmake-3.31/Modules/Internal/CMakeCommonLinkerInformation.cmake"
@@ -43,8 +46,6 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.31.7/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.31.7/CMakeRCCompiler.cmake"
   "CMakeFiles/3.31.7/CMakeSystem.cmake"
-  "D:/vscode/final/shaders/shader.frag"
-  "D:/vscode/final/shaders/shader.vert"
   )
 
 # The corresponding makefile is:
@@ -55,12 +56,11 @@ set(CMAKE_MAKEFILE_OUTPUTS
 
 # Byproducts of CMake generate step:
 set(CMAKE_MAKEFILE_PRODUCTS
-  "shaders/shader.frag"
-  "shaders/shader.vert"
   "CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/3DMazeGame.dir/DependInfo.cmake"
+  "CMakeFiles/Shaders.dir/DependInfo.cmake"
   )

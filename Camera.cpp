@@ -4,10 +4,10 @@
 #include <iostream> 
 
 Camera::Camera()
-    : position(-25.8f, 17.45f, -36.85f),
+    : position(-25.8f, 17.5f, -36.8f),
       up(0.0f, 1.0f, 0.0f), 
-      pitch(-21.2f),
-      yaw(55.0f),      
+      pitch(-21.2f), 
+      yaw(55.0f), 
       movementSpeed(2.5f),
       mouseSensitivity(0.1f),
       firstMouse(true),
@@ -19,13 +19,13 @@ Camera::Camera()
       m_isRightMouseButtonDown(false),
       m_panSpeed(0.005f), 
       m_zoomSpeed(0.05f), 
-      m_orbitSpeed(0.2f),
+      m_orbitSpeed(0.1f), 
       m_orbitTarget(0.0f, 0.0f, 0.0f)
 {
     updateVectors();
     m_distanceToTarget = glm::length(position - m_orbitTarget);
     if (m_distanceToTarget < 0.001f) {
-         m_distanceToTarget = 10.0f;
+         m_distanceToTarget = 5.0f; 
          position = m_orbitTarget - front * m_distanceToTarget; 
     }
     updateViewMatrix();
@@ -76,15 +76,11 @@ void Camera::handleMouseScroll(double yoffset) {
 }
 void Camera::performOrbit(float xoffset, float yoffset) {
     float yawAngleDelta = xoffset * m_orbitSpeed;
-    float pitchAngleDelta = -yoffset * m_orbitSpeed;
+    float pitchAngleDelta = -yoffset * m_orbitSpeed; 
     yaw += yawAngleDelta;
     pitch += pitchAngleDelta;
-    
-    if (pitch > 89.0f)
-        pitch = 89.0f;
-    if (pitch < -89.0f)
-        pitch = -89.0f;
-        
+    if (pitch > 89.0f) pitch = 89.0f;
+    if (pitch < -89.0f) pitch = -89.0f;
     updateVectors();
     position = m_orbitTarget - front * m_distanceToTarget;
     updateViewMatrix();
@@ -160,6 +156,9 @@ void Camera::moveDown(float distance) {
 void Camera::rotate(float p, float y) {
     pitch += p;
     yaw += y;
+    if (pitch > 89.0f) pitch = 89.0f;
+    if (pitch < -89.0f) pitch = -89.0f;
+
     updateVectors();
     position = m_orbitTarget - front * m_distanceToTarget;
     updateViewMatrix();
@@ -171,15 +170,18 @@ void Camera::updateVectors() {
     newFront.y = sin(glm::radians(pitch));
     newFront.z = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
     front = glm::normalize(newFront);
-    right = glm::normalize(glm::cross(front, glm::vec3(0.0f, 1.0f, 0.0f)));
-    up = glm::normalize(glm::cross(right, front));
+    right = glm::normalize(glm::cross(front, glm::vec3(0.0f, 1.0f, 0.0f))); 
+    up = glm::normalize(glm::cross(right, front)); 
 }
 
 void Camera::updateViewMatrix() {
-    viewMatrix = glm::lookAt(position, position + front, up);
-    // std::cout << "Camera Position: (" << position.x << ", " << position.y << ", " << position.z << ")" << std::endl;
-    // std::cout << "Pitch: " << pitch << " Yaw: " << yaw << std::endl;
-    // std::cout << "-------------------" << std::endl;
+    viewMatrix = glm::lookAt(position, m_orbitTarget, up); 
+    // std::cout << "position: " << position.x << ", " << position.y << ", " << position.z << std::endl;
+    // std::cout << "front: " << front.x << ", " << front.y << ", " << front.z << std::endl;
+    // std::cout << "right: " << right.x << ", " << right.y << ", " << right.z << std::endl;
+    // std::cout << "up: " << up.x << ", " << up.y << ", " << up.z << std::endl;
+    // std::cout << "pitch: " << pitch << ", yaw: " << yaw << std::endl;
+    // std::cout << "--------------------------------" << std::endl;
 }
 
 void Camera::update(float deltaTime) {
@@ -189,24 +191,35 @@ void Camera::handleInput(int key, int action) {
     if (action == GLFW_PRESS || action == GLFW_REPEAT) {
         float velocity = movementSpeed * 0.1f; 
         switch (key) {
-            case GLFW_KEY_W:
-                moveForward(velocity);
-                break;
-            case GLFW_KEY_S:
-                moveBackward(velocity);
-                break;
-            case GLFW_KEY_A:
-                moveLeft(velocity);
-                break;
-            case GLFW_KEY_D:
-                moveRight(velocity);
-                break;
+            // case GLFW_KEY_W:
+            //     moveForward(velocity);
+            //     break;
+            // case GLFW_KEY_S:
+            //     moveBackward(velocity);
+            //     break;
+            // case GLFW_KEY_A:
+            //     moveLeft(velocity);
+            //     break;
+            // case GLFW_KEY_D:
+            //     moveRight(velocity);
+            //     break;
             case GLFW_KEY_SPACE:
-                moveUp(velocity); 
-                break;
-            case GLFW_KEY_LEFT_CONTROL:
-                moveDown(velocity); 
+                followBall(ballPosition, ballDirection);
                 break;
         }
     }
+}
+
+void Camera::followBall(const glm::vec3& ballPosition, const glm::vec3& ballDirection) {
+    // position = ballPosition - ballDirection * 5.0f + glm::vec3(0.0f, 2.0f, 0.0f);
+    position = ballPosition + glm::vec3(20.0f, 20.0f, 0.0f);
+    
+    front = glm::normalize(ballPosition - position);
+    right = glm::normalize(glm::cross(front, glm::vec3(0.0f, 1.0f, 0.0f)));
+    up = glm::normalize(glm::cross(right, front));
+
+    pitch = 0.0f; 
+    yaw = 0.0f; 
+    
+    updateViewMatrix();
 }

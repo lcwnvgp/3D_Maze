@@ -1,6 +1,7 @@
 #pragma once
 
 #include <glm/glm.hpp>
+#include <glm/gtc/quaternion.hpp>
 #include <GLFW/glfw3.h>
 
 class Camera {
@@ -24,13 +25,14 @@ public:
     void handleMouseScroll(double yoffset);
     void setMouseButton(int button, bool state);
     bool isDragging = false; 
-
+    void followBall(const glm::vec3& ballPosition, const glm::vec3& ballDirection);
 
 private:
     glm::vec3 position;
     glm::vec3 up; 
     glm::vec3 right; 
     glm::vec3 front; 
+    glm::quat m_orientation;
 
     float pitch; 
     float yaw;   
@@ -51,6 +53,9 @@ private:
 
     glm::mat4 viewMatrix;
     glm::mat4 projectionMatrix;
+
+    glm::vec3 ballPosition; 
+    glm::vec3 ballDirection; 
 
     void updateVectors(); 
     void updateViewMatrix(); 

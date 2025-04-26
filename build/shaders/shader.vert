@@ -7,11 +7,16 @@ layout(location = 2) in vec2 inTexCoord;
 layout(location = 0) out vec3 fragNormal;
 layout(location = 1) out vec3 fragPos;
 layout(location = 2) out vec2 fragTexCoord;
+layout(location = 3) out vec4 fragPosLightSpace;
 
 layout(binding = 0) uniform UniformBufferObject {
     mat4 view;
     mat4 proj;
 } ubo;
+
+layout(binding = 3) uniform ShadowUniformBufferObject {
+    mat4 lightSpace;
+} shadow;
 
 layout(push_constant) uniform PushConstants {
     mat4 model;
@@ -22,4 +27,5 @@ void main() {
     fragPos = vec3(pc.model * vec4(inPosition, 1.0));
     fragNormal = mat3(transpose(inverse(pc.model))) * inNormal;
     fragTexCoord = inTexCoord;
+    fragPosLightSpace = shadow.lightSpace * vec4(fragPos, 1.0);
 }

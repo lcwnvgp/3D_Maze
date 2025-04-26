@@ -18,6 +18,11 @@ public:
     const std::vector<Vertex>& GetVertices() const { return vertices; }
     const std::vector<uint32_t>& GetIndices() const { return indices; }
 
+    VkBuffer getVertexBuffer() const { return vertexBuffer; }
+    VkBuffer getIndexBuffer() const { return indexBuffer; }
+    glm::vec3 getPosition() const { return position; }
+    glm::vec3 getScale() const { return scale; }
+
 private:
     void loadModel(const std::string& modelPath);
     void createVertexBuffer(VkPhysicalDevice physicalDevice);
@@ -41,4 +46,7 @@ private:
     VkBuffer uniformBuffer;
     VkDeviceMemory uniformBufferMemory;
     void* uniformBufferMapped;
+
+    glm::vec3 position = glm::vec3(0.0f);
+    glm::vec3 scale = glm::vec3(1.0f);
 };

@@ -8,8 +8,8 @@ if "%VULKAN_SDK%"=="" (
     exit /b 1
 )
 
-if not exist "%VULKAN_SDK%\Bin\glslc.exe" (
-    echo Error: glslc.exe not found in Vulkan SDK!
+if not exist "%VULKAN_SDK%\Bin\glslangValidator.exe" (
+    echo Error: glslangValidator.exe not found in Vulkan SDK!
     echo Please ensure Vulkan SDK is properly installed.
     pause
     exit /b 1
@@ -18,63 +18,46 @@ if not exist "%VULKAN_SDK%\Bin\glslc.exe" (
 echo Creating shaders directory if it doesn't exist...
 if not exist "shaders" mkdir shaders
 
-echo Compiling vertex shader...
-"%VULKAN_SDK%\Bin\glslc.exe" shaders/shader.vert -o shaders/shader.vert.spv
+echo Compiling raygen shader...
+"%VULKAN_SDK%\Bin\glslangValidator.exe" -V --target-env vulkan1.2 -S rgen shaders/raygen.rgen -o shaders/raygen.rgen.spv
 if %ERRORLEVEL% NEQ 0 (
-    echo Error: Failed to compile vertex shader!
+    echo Error: Failed to compile raygen shader!
     pause
     exit /b 1
 )
 
-echo Compiling fragment shader...
-"%VULKAN_SDK%\Bin\glslc.exe" shaders/shader.frag -o shaders/shader.frag.spv
+echo Compiling miss shader...
+"%VULKAN_SDK%\Bin\glslangValidator.exe" -V --target-env vulkan1.2 -S rmiss shaders/miss.rmiss -o shaders/miss.rmiss.spv
 if %ERRORLEVEL% NEQ 0 (
-    echo Error: Failed to compile fragment shader!
+    echo Error: Failed to compile miss shader!
     pause
     exit /b 1
 )
 
-echo Compiling fragment shader...
-"%VULKAN_SDK%\Bin\glslc.exe" shaders/shadow.vert -o shaders/shadow.veet.spv
+echo Compiling closesthit shader...
+"%VULKAN_SDK%\Bin\glslangValidator.exe" -V --target-env vulkan1.2 -S rchit shaders/closesthit.rchit -o shaders/closesthit.rchit.spv
 if %ERRORLEVEL% NEQ 0 (
-    echo Error: Failed to compile fragment shader!
+    echo Error: Failed to compile closesthit shader!
     pause
     exit /b 1
 )
 
-echo Compiling fragment shader...
-"%VULKAN_SDK%\Bin\glslc.exe" shaders/shadow.frag -o shaders/shadow.frag.spv
-if %ERRORLEVEL% NEQ 0 (
-    echo Error: Failed to compile fragment shader!
-    pause
-    exit /b 1
-)
 
 echo Verifying compiled shaders...
-if not exist "shaders\shader.vert.spv" (
-    echo Error: shader.vert.spv was not created!
+if not exist "shaders\raygen.rgen.spv" (
+    echo Error: raygen.rgen.spv was not created!
     pause
     exit /b 1
 )
 
-if not exist "shaders\shader.frag.spv" (
-    echo Error: shader.frag.spv was not created!
+if not exist "shaders\miss.rmiss.spv" (
+    echo Error: miss.rmiss.spv was not created!
     pause
     exit /b 1
 )
 
-echo Compiling shadow vertex shader...
-"%VULKAN_SDK%\Bin\glslc.exe" shaders/shadow.vert -o shaders/shadow.vert.spv
-if %ERRORLEVEL% NEQ 0 (
-    echo Error: Failed to compile shadow vertex shader!
-    pause
-    exit /b 1
-)
-
-echo Compiling shadow fragment shader...    
-"%VULKAN_SDK%\Bin\glslc.exe" shaders/shadow.frag -o shaders/shadow.frag.spv
-if %ERRORLEVEL% NEQ 0 (
-    echo Error: Failed to compile shadow fragment shader!
+if not exist "shaders\closesthit.rchit.spv" (
+    echo Error: closesthit.rchit.spv was not created!
     pause
     exit /b 1
 )

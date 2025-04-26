@@ -128,6 +128,19 @@ depend:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\3DMazeGame.dir\build.make CMakeFiles/3DMazeGame.dir/build
 .PHONY : 3DMazeGame/fast
 
+#=============================================================================
+# Target rules for targets named Shaders
+
+# Build rule for target.
+Shaders: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 Shaders
+.PHONY : Shaders
+
+# fast build rule for target.
+Shaders/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Shaders.dir\build.make CMakeFiles/Shaders.dir/build
+.PHONY : Shaders/fast
+
 Camera.obj: Camera.cpp.obj
 .PHONY : Camera.obj
 
@@ -256,6 +269,7 @@ help:
 	@echo ... depend
 	@echo ... edit_cache
 	@echo ... rebuild_cache
+	@echo ... Shaders
 	@echo ... 3DMazeGame
 	@echo ... Camera.obj
 	@echo ... Camera.i
