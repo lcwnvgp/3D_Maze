@@ -116,24 +116,24 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named VulkanMazeGame
+# Target rules for targets named 3DMazeGame
 
 # Build rule for target.
-VulkanMazeGame: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 VulkanMazeGame
-.PHONY : VulkanMazeGame
+3DMazeGame: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 3DMazeGame
+.PHONY : 3DMazeGame
 
 # fast build rule for target.
-VulkanMazeGame/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\VulkanMazeGame.dir\build.make CMakeFiles/VulkanMazeGame.dir/build
-.PHONY : VulkanMazeGame/fast
+3DMazeGame/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\3DMazeGame.dir\build.make CMakeFiles/3DMazeGame.dir/build
+.PHONY : 3DMazeGame/fast
 
 Camera.obj: Camera.cpp.obj
 .PHONY : Camera.obj
 
 # target to build an object file
 Camera.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\VulkanMazeGame.dir\build.make CMakeFiles/VulkanMazeGame.dir/Camera.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\3DMazeGame.dir\build.make CMakeFiles/3DMazeGame.dir/Camera.cpp.obj
 .PHONY : Camera.cpp.obj
 
 Camera.i: Camera.cpp.i
@@ -141,7 +141,7 @@ Camera.i: Camera.cpp.i
 
 # target to preprocess a source file
 Camera.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\VulkanMazeGame.dir\build.make CMakeFiles/VulkanMazeGame.dir/Camera.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\3DMazeGame.dir\build.make CMakeFiles/3DMazeGame.dir/Camera.cpp.i
 .PHONY : Camera.cpp.i
 
 Camera.s: Camera.cpp.s
@@ -149,7 +149,7 @@ Camera.s: Camera.cpp.s
 
 # target to generate assembly for a file
 Camera.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\VulkanMazeGame.dir\build.make CMakeFiles/VulkanMazeGame.dir/Camera.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\3DMazeGame.dir\build.make CMakeFiles/3DMazeGame.dir/Camera.cpp.s
 .PHONY : Camera.cpp.s
 
 VulkanContext.obj: VulkanContext.cpp.obj
@@ -157,7 +157,7 @@ VulkanContext.obj: VulkanContext.cpp.obj
 
 # target to build an object file
 VulkanContext.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\VulkanMazeGame.dir\build.make CMakeFiles/VulkanMazeGame.dir/VulkanContext.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\3DMazeGame.dir\build.make CMakeFiles/3DMazeGame.dir/VulkanContext.cpp.obj
 .PHONY : VulkanContext.cpp.obj
 
 VulkanContext.i: VulkanContext.cpp.i
@@ -165,7 +165,7 @@ VulkanContext.i: VulkanContext.cpp.i
 
 # target to preprocess a source file
 VulkanContext.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\VulkanMazeGame.dir\build.make CMakeFiles/VulkanMazeGame.dir/VulkanContext.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\3DMazeGame.dir\build.make CMakeFiles/3DMazeGame.dir/VulkanContext.cpp.i
 .PHONY : VulkanContext.cpp.i
 
 VulkanContext.s: VulkanContext.cpp.s
@@ -173,7 +173,7 @@ VulkanContext.s: VulkanContext.cpp.s
 
 # target to generate assembly for a file
 VulkanContext.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\VulkanMazeGame.dir\build.make CMakeFiles/VulkanMazeGame.dir/VulkanContext.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\3DMazeGame.dir\build.make CMakeFiles/3DMazeGame.dir/VulkanContext.cpp.s
 .PHONY : VulkanContext.cpp.s
 
 main.obj: main.cpp.obj
@@ -181,7 +181,7 @@ main.obj: main.cpp.obj
 
 # target to build an object file
 main.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\VulkanMazeGame.dir\build.make CMakeFiles/VulkanMazeGame.dir/main.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\3DMazeGame.dir\build.make CMakeFiles/3DMazeGame.dir/main.cpp.obj
 .PHONY : main.cpp.obj
 
 main.i: main.cpp.i
@@ -189,7 +189,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\VulkanMazeGame.dir\build.make CMakeFiles/VulkanMazeGame.dir/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\3DMazeGame.dir\build.make CMakeFiles/3DMazeGame.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -197,7 +197,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\VulkanMazeGame.dir\build.make CMakeFiles/VulkanMazeGame.dir/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\3DMazeGame.dir\build.make CMakeFiles/3DMazeGame.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 model.obj: model.cpp.obj
@@ -205,7 +205,7 @@ model.obj: model.cpp.obj
 
 # target to build an object file
 model.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\VulkanMazeGame.dir\build.make CMakeFiles/VulkanMazeGame.dir/model.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\3DMazeGame.dir\build.make CMakeFiles/3DMazeGame.dir/model.cpp.obj
 .PHONY : model.cpp.obj
 
 model.i: model.cpp.i
@@ -213,7 +213,7 @@ model.i: model.cpp.i
 
 # target to preprocess a source file
 model.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\VulkanMazeGame.dir\build.make CMakeFiles/VulkanMazeGame.dir/model.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\3DMazeGame.dir\build.make CMakeFiles/3DMazeGame.dir/model.cpp.i
 .PHONY : model.cpp.i
 
 model.s: model.cpp.s
@@ -221,7 +221,7 @@ model.s: model.cpp.s
 
 # target to generate assembly for a file
 model.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\VulkanMazeGame.dir\build.make CMakeFiles/VulkanMazeGame.dir/model.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\3DMazeGame.dir\build.make CMakeFiles/3DMazeGame.dir/model.cpp.s
 .PHONY : model.cpp.s
 
 tiny_obj_loader.obj: tiny_obj_loader.cc.obj
@@ -229,7 +229,7 @@ tiny_obj_loader.obj: tiny_obj_loader.cc.obj
 
 # target to build an object file
 tiny_obj_loader.cc.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\VulkanMazeGame.dir\build.make CMakeFiles/VulkanMazeGame.dir/tiny_obj_loader.cc.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\3DMazeGame.dir\build.make CMakeFiles/3DMazeGame.dir/tiny_obj_loader.cc.obj
 .PHONY : tiny_obj_loader.cc.obj
 
 tiny_obj_loader.i: tiny_obj_loader.cc.i
@@ -237,7 +237,7 @@ tiny_obj_loader.i: tiny_obj_loader.cc.i
 
 # target to preprocess a source file
 tiny_obj_loader.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\VulkanMazeGame.dir\build.make CMakeFiles/VulkanMazeGame.dir/tiny_obj_loader.cc.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\3DMazeGame.dir\build.make CMakeFiles/3DMazeGame.dir/tiny_obj_loader.cc.i
 .PHONY : tiny_obj_loader.cc.i
 
 tiny_obj_loader.s: tiny_obj_loader.cc.s
@@ -245,7 +245,7 @@ tiny_obj_loader.s: tiny_obj_loader.cc.s
 
 # target to generate assembly for a file
 tiny_obj_loader.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\VulkanMazeGame.dir\build.make CMakeFiles/VulkanMazeGame.dir/tiny_obj_loader.cc.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\3DMazeGame.dir\build.make CMakeFiles/3DMazeGame.dir/tiny_obj_loader.cc.s
 .PHONY : tiny_obj_loader.cc.s
 
 # Help Target
@@ -256,7 +256,7 @@ help:
 	@echo ... depend
 	@echo ... edit_cache
 	@echo ... rebuild_cache
-	@echo ... VulkanMazeGame
+	@echo ... 3DMazeGame
 	@echo ... Camera.obj
 	@echo ... Camera.i
 	@echo ... Camera.s
