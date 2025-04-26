@@ -420,7 +420,10 @@ void Model::checkEdgeDistance(const glm::vec3& point, const glm::vec3& a,
 
 bool Model::checkSphereCollision(const glm::vec3& center, float radius, 
                              const glm::mat4& modelMatrix, 
-                             std::vector<CollisionInfo>& collisions) {
+                             std::vector<CollisionInfo>& collisions,
+                             std::vector<CollisionImpulse>& impulses,
+                             const glm::vec3& velocity,
+                             float restitution) {
     // 1. 更新AABB
     updateBoundingBox(modelMatrix);
     
@@ -430,8 +433,35 @@ bool Model::checkSphereCollision(const glm::vec3& center, float radius,
     }
     
     // 3. 使用BVH进行细粒度碰撞检测
-    return checkSphereCollisionBVH(center, radius, modelMatrix, 0, collisions);
+    bool hasCollision = checkSphereCollisionBVH(center, radius, modelMatrix, 0, collisions);
+    
+    // 4. 如果检测到碰撞，计算每个碰撞点的冲量
+    if (hasCollision) {
+        for (const auto& collision : collisions) {
+            // 计算速度在法线方向的分量
+            float velocityAlongNormal = glm::dot(velocity, collision.normal);
+            
+            // 如果速度已经沿法线方向远离，跳过冲量计算
+            if (velocityAlongNormal > 0)
+                continue;
+            
+            // 计算冲量大小
+            float e = restitution; // 恢复系数
+            float j = -(1.0f + e) * velocityAlongNormal;
+                
+            // 创建冲量信息
+            CollisionImpulse impulse;
+            impulse.impulseVector = j * collision.normal;
+            impulse.contactPoint = collision.contactPoint;
+            impulse.magnitude = j;
+            
+            impulses.push_back(impulse);
+        }
+    }
+    
+    return hasCollision;
 }
+
 
 bool Model::checkSphereCollisionBVH(const glm::vec3& center, float radius,
                                 const glm::mat4& modelMatrix, int nodeIdx,

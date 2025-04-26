@@ -40,6 +40,7 @@ void scroll_callback(GLFWwindow* window, double xoffset, double yoffset) {
     }
 }
 
+
 int main() {
     try {
         VulkanContext context;

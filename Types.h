@@ -50,3 +50,15 @@ struct LightUniformBufferObject {
     glm::vec3 lightColor;
     float ambientStrength;
 }; 
+
+// 碰撞冲量信息结构体
+struct CollisionImpulse {
+    glm::vec3 impulseVector;       // 碰撞冲量向量
+    glm::vec3 contactPoint;        // 冲量应用点
+    float magnitude;               // 冲量大小
+    
+    CollisionImpulse() : 
+        impulseVector(0.0f), 
+        contactPoint(0.0f), 
+        magnitude(0.0f) {}
+};

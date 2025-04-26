@@ -44,8 +44,11 @@ public:
     void initCollisionData();
     void updateBoundingBox(const glm::mat4& transform);
     bool checkSphereCollision(const glm::vec3& center, float radius, 
-                           const glm::mat4& modelMatrix, 
-                           std::vector<CollisionInfo>& collisions);
+                         const glm::mat4& modelMatrix,
+                         std::vector<CollisionInfo>& collisions,
+                         std::vector<CollisionImpulse>& impulses,
+                         const glm::vec3& velocity = glm::vec3(0.0f),
+                         float restitution = 0.7f);
 
 private:
     void loadModel(const std::string& modelPath);
