@@ -100,4 +100,5 @@ private:
     std::vector<VkBuffer> lightUniformBuffers;
     std::vector<VkDeviceMemory> lightUniformBuffersMemory;
     std::vector<void*> lightUniformBuffersMapped;
+    LightUniformBufferObject lightUbo{ {0.0f, 20.0f, 0.0f, 1.0f}, {1.0f, 1.0f, 1.0f, 1.0f}, 0.2f };
 };
