@@ -8,7 +8,7 @@
 
 // 碰撞检测输出结构
 struct CollisionInfo {
-    glm::vec3 contactPoint;   // 碰撞接触点
+    glm::vec3 contactPoint;   // 碰撞接触点 -- 接触点是球体表面与三角形相交或最近的点
     glm::vec3 normal;         // 碰撞法向量（指向物体外部）
     float penetrationDepth;   // 穿透深度
     class Model* collidedObject;  // 碰撞的对象指针
@@ -57,6 +57,7 @@ private:
 
     // 碰撞检测辅助方法
     void buildBVH();
+    void buildBVHRecursive(int nodeIdx, int start, int count, const std::vector<BoundingBox>& triangleBounds);
     bool sphereTriangleCollision(const glm::vec3& center, float radius,
                               int triIndex, const glm::mat4& transform,
                               CollisionInfo* info = nullptr) const;
