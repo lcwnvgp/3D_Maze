@@ -31,10 +31,13 @@ CMAKE_AR:FILEPATH=D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/min
 
 //Choose the type of build, options are: None Debug Release RelWithDebInfo
 // MinSizeRel ...
-CMAKE_BUILD_TYPE:STRING=
+CMAKE_BUILD_TYPE:STRING=Release
 
 //Enable/Disable color output during build.
 CMAKE_COLOR_MAKEFILE:BOOL=ON
+
+//CXX compiler
+CMAKE_CXX_COMPILER:FILEPATH=D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/bin/c++.exe
 
 //A wrapper around 'ar' adding the appropriate '--plugin' option
 // for the GCC compiler
@@ -61,6 +64,9 @@ CMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING=-O2 -g -DNDEBUG
 
 //Libraries linked by default with all C++ applications.
 CMAKE_CXX_STANDARD_LIBRARIES:STRING=-lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
+
+//C compiler
+CMAKE_C_COMPILER:FILEPATH=D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/bin/cc.exe
 
 //A wrapper around 'ar' adding the appropriate '--plugin' option
 // for the GCC compiler
@@ -251,24 +257,6 @@ VulkanMazeGame_IS_TOP_LEVEL:STATIC=ON
 //Value Computed by CMake
 VulkanMazeGame_SOURCE_DIR:STATIC=D:/vscode/final
 
-//Path to a program.
-Vulkan_GLSLANG_VALIDATOR_EXECUTABLE:FILEPATH=D:/vscode/vulkanSDK/Bin/glslangValidator.exe
-
-//Path to a program.
-Vulkan_GLSLC_EXECUTABLE:FILEPATH=D:/vscode/vulkanSDK/Bin/glslc.exe
-
-//Path to a file.
-Vulkan_INCLUDE_DIR:PATH=D:/vscode/vulkanSDK/Include
-
-//Path to a library.
-Vulkan_LIBRARY:FILEPATH=D:/vscode/vulkanSDK/Lib/vulkan-1.lib
-
-//The directory containing a CMake configuration file for glfw3.
-glfw3_DIR:PATH=glfw3_DIR-NOTFOUND
-
-//The directory containing a CMake configuration file for glm.
-glm_DIR:PATH=glm_DIR-NOTFOUND
-
 
 ########################
 # INTERNAL cache entries
@@ -294,6 +282,8 @@ CMAKE_COMMAND:INTERNAL=D:/vscode/cmake/bin/cmake.exe
 CMAKE_CPACK_COMMAND:INTERNAL=D:/vscode/cmake/bin/cpack.exe
 //Path to ctest program executable.
 CMAKE_CTEST_COMMAND:INTERNAL=D:/vscode/cmake/bin/ctest.exe
+//ADVANCED property for variable: CMAKE_CXX_COMPILER
+CMAKE_CXX_COMPILER-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_CXX_COMPILER_AR
 CMAKE_CXX_COMPILER_AR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_CXX_COMPILER_RANLIB
@@ -310,6 +300,8 @@ CMAKE_CXX_FLAGS_RELEASE-ADVANCED:INTERNAL=1
 CMAKE_CXX_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_CXX_STANDARD_LIBRARIES
 CMAKE_CXX_STANDARD_LIBRARIES-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_C_COMPILER
+CMAKE_C_COMPILER-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_C_COMPILER_AR
 CMAKE_C_COMPILER_AR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_C_COMPILER_RANLIB
@@ -428,14 +420,4 @@ CMAKE_STRIP-ADVANCED:INTERNAL=1
 CMAKE_TAPI-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
-//Details about finding Vulkan
-FIND_PACKAGE_MESSAGE_DETAILS_Vulkan:INTERNAL=[D:/vscode/vulkanSDK/Lib/vulkan-1.lib][D:/vscode/vulkanSDK/Include][cfound components: glslc glslangValidator ][v1.4.309()]
-//ADVANCED property for variable: Vulkan_GLSLANG_VALIDATOR_EXECUTABLE
-Vulkan_GLSLANG_VALIDATOR_EXECUTABLE-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: Vulkan_GLSLC_EXECUTABLE
-Vulkan_GLSLC_EXECUTABLE-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: Vulkan_INCLUDE_DIR
-Vulkan_INCLUDE_DIR-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: Vulkan_LIBRARY
-Vulkan_LIBRARY-ADVANCED:INTERNAL=1
 

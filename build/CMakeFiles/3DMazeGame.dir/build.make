@@ -76,75 +76,75 @@ CMakeFiles/3DMazeGame.dir/main.cpp.obj: CMakeFiles/3DMazeGame.dir/includes_CXX.r
 CMakeFiles/3DMazeGame.dir/main.cpp.obj: D:/vscode/final/main.cpp
 CMakeFiles/3DMazeGame.dir/main.cpp.obj: CMakeFiles/3DMazeGame.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\vscode\final\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/3DMazeGame.dir/main.cpp.obj"
-	D:\vscode\x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3DMazeGame.dir/main.cpp.obj -MF CMakeFiles\3DMazeGame.dir\main.cpp.obj.d -o CMakeFiles\3DMazeGame.dir\main.cpp.obj -c D:\vscode\final\main.cpp
+	D:\vscode\x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3DMazeGame.dir/main.cpp.obj -MF CMakeFiles\3DMazeGame.dir\main.cpp.obj.d -o CMakeFiles\3DMazeGame.dir\main.cpp.obj -c D:\vscode\final\main.cpp
 
 CMakeFiles/3DMazeGame.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/3DMazeGame.dir/main.cpp.i"
-	D:\vscode\x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\vscode\final\main.cpp > CMakeFiles\3DMazeGame.dir\main.cpp.i
+	D:\vscode\x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\vscode\final\main.cpp > CMakeFiles\3DMazeGame.dir\main.cpp.i
 
 CMakeFiles/3DMazeGame.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3DMazeGame.dir/main.cpp.s"
-	D:\vscode\x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\vscode\final\main.cpp -o CMakeFiles\3DMazeGame.dir\main.cpp.s
+	D:\vscode\x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\vscode\final\main.cpp -o CMakeFiles\3DMazeGame.dir\main.cpp.s
 
 CMakeFiles/3DMazeGame.dir/VulkanContext.cpp.obj: CMakeFiles/3DMazeGame.dir/flags.make
 CMakeFiles/3DMazeGame.dir/VulkanContext.cpp.obj: CMakeFiles/3DMazeGame.dir/includes_CXX.rsp
 CMakeFiles/3DMazeGame.dir/VulkanContext.cpp.obj: D:/vscode/final/VulkanContext.cpp
 CMakeFiles/3DMazeGame.dir/VulkanContext.cpp.obj: CMakeFiles/3DMazeGame.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\vscode\final\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/3DMazeGame.dir/VulkanContext.cpp.obj"
-	D:\vscode\x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3DMazeGame.dir/VulkanContext.cpp.obj -MF CMakeFiles\3DMazeGame.dir\VulkanContext.cpp.obj.d -o CMakeFiles\3DMazeGame.dir\VulkanContext.cpp.obj -c D:\vscode\final\VulkanContext.cpp
+	D:\vscode\x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3DMazeGame.dir/VulkanContext.cpp.obj -MF CMakeFiles\3DMazeGame.dir\VulkanContext.cpp.obj.d -o CMakeFiles\3DMazeGame.dir\VulkanContext.cpp.obj -c D:\vscode\final\VulkanContext.cpp
 
 CMakeFiles/3DMazeGame.dir/VulkanContext.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/3DMazeGame.dir/VulkanContext.cpp.i"
-	D:\vscode\x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\vscode\final\VulkanContext.cpp > CMakeFiles\3DMazeGame.dir\VulkanContext.cpp.i
+	D:\vscode\x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\vscode\final\VulkanContext.cpp > CMakeFiles\3DMazeGame.dir\VulkanContext.cpp.i
 
 CMakeFiles/3DMazeGame.dir/VulkanContext.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3DMazeGame.dir/VulkanContext.cpp.s"
-	D:\vscode\x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\vscode\final\VulkanContext.cpp -o CMakeFiles\3DMazeGame.dir\VulkanContext.cpp.s
+	D:\vscode\x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\vscode\final\VulkanContext.cpp -o CMakeFiles\3DMazeGame.dir\VulkanContext.cpp.s
 
 CMakeFiles/3DMazeGame.dir/model.cpp.obj: CMakeFiles/3DMazeGame.dir/flags.make
 CMakeFiles/3DMazeGame.dir/model.cpp.obj: CMakeFiles/3DMazeGame.dir/includes_CXX.rsp
 CMakeFiles/3DMazeGame.dir/model.cpp.obj: D:/vscode/final/model.cpp
 CMakeFiles/3DMazeGame.dir/model.cpp.obj: CMakeFiles/3DMazeGame.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\vscode\final\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/3DMazeGame.dir/model.cpp.obj"
-	D:\vscode\x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3DMazeGame.dir/model.cpp.obj -MF CMakeFiles\3DMazeGame.dir\model.cpp.obj.d -o CMakeFiles\3DMazeGame.dir\model.cpp.obj -c D:\vscode\final\model.cpp
+	D:\vscode\x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3DMazeGame.dir/model.cpp.obj -MF CMakeFiles\3DMazeGame.dir\model.cpp.obj.d -o CMakeFiles\3DMazeGame.dir\model.cpp.obj -c D:\vscode\final\model.cpp
 
 CMakeFiles/3DMazeGame.dir/model.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/3DMazeGame.dir/model.cpp.i"
-	D:\vscode\x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\vscode\final\model.cpp > CMakeFiles\3DMazeGame.dir\model.cpp.i
+	D:\vscode\x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\vscode\final\model.cpp > CMakeFiles\3DMazeGame.dir\model.cpp.i
 
 CMakeFiles/3DMazeGame.dir/model.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3DMazeGame.dir/model.cpp.s"
-	D:\vscode\x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\vscode\final\model.cpp -o CMakeFiles\3DMazeGame.dir\model.cpp.s
+	D:\vscode\x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\vscode\final\model.cpp -o CMakeFiles\3DMazeGame.dir\model.cpp.s
 
 CMakeFiles/3DMazeGame.dir/Camera.cpp.obj: CMakeFiles/3DMazeGame.dir/flags.make
 CMakeFiles/3DMazeGame.dir/Camera.cpp.obj: CMakeFiles/3DMazeGame.dir/includes_CXX.rsp
 CMakeFiles/3DMazeGame.dir/Camera.cpp.obj: D:/vscode/final/Camera.cpp
 CMakeFiles/3DMazeGame.dir/Camera.cpp.obj: CMakeFiles/3DMazeGame.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\vscode\final\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/3DMazeGame.dir/Camera.cpp.obj"
-	D:\vscode\x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3DMazeGame.dir/Camera.cpp.obj -MF CMakeFiles\3DMazeGame.dir\Camera.cpp.obj.d -o CMakeFiles\3DMazeGame.dir\Camera.cpp.obj -c D:\vscode\final\Camera.cpp
+	D:\vscode\x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3DMazeGame.dir/Camera.cpp.obj -MF CMakeFiles\3DMazeGame.dir\Camera.cpp.obj.d -o CMakeFiles\3DMazeGame.dir\Camera.cpp.obj -c D:\vscode\final\Camera.cpp
 
 CMakeFiles/3DMazeGame.dir/Camera.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/3DMazeGame.dir/Camera.cpp.i"
-	D:\vscode\x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\vscode\final\Camera.cpp > CMakeFiles\3DMazeGame.dir\Camera.cpp.i
+	D:\vscode\x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\vscode\final\Camera.cpp > CMakeFiles\3DMazeGame.dir\Camera.cpp.i
 
 CMakeFiles/3DMazeGame.dir/Camera.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3DMazeGame.dir/Camera.cpp.s"
-	D:\vscode\x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\vscode\final\Camera.cpp -o CMakeFiles\3DMazeGame.dir\Camera.cpp.s
+	D:\vscode\x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\vscode\final\Camera.cpp -o CMakeFiles\3DMazeGame.dir\Camera.cpp.s
 
 CMakeFiles/3DMazeGame.dir/tiny_obj_loader.cc.obj: CMakeFiles/3DMazeGame.dir/flags.make
 CMakeFiles/3DMazeGame.dir/tiny_obj_loader.cc.obj: CMakeFiles/3DMazeGame.dir/includes_CXX.rsp
 CMakeFiles/3DMazeGame.dir/tiny_obj_loader.cc.obj: D:/vscode/final/tiny_obj_loader.cc
 CMakeFiles/3DMazeGame.dir/tiny_obj_loader.cc.obj: CMakeFiles/3DMazeGame.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\vscode\final\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/3DMazeGame.dir/tiny_obj_loader.cc.obj"
-	D:\vscode\x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3DMazeGame.dir/tiny_obj_loader.cc.obj -MF CMakeFiles\3DMazeGame.dir\tiny_obj_loader.cc.obj.d -o CMakeFiles\3DMazeGame.dir\tiny_obj_loader.cc.obj -c D:\vscode\final\tiny_obj_loader.cc
+	D:\vscode\x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3DMazeGame.dir/tiny_obj_loader.cc.obj -MF CMakeFiles\3DMazeGame.dir\tiny_obj_loader.cc.obj.d -o CMakeFiles\3DMazeGame.dir\tiny_obj_loader.cc.obj -c D:\vscode\final\tiny_obj_loader.cc
 
 CMakeFiles/3DMazeGame.dir/tiny_obj_loader.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/3DMazeGame.dir/tiny_obj_loader.cc.i"
-	D:\vscode\x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\vscode\final\tiny_obj_loader.cc > CMakeFiles\3DMazeGame.dir\tiny_obj_loader.cc.i
+	D:\vscode\x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\vscode\final\tiny_obj_loader.cc > CMakeFiles\3DMazeGame.dir\tiny_obj_loader.cc.i
 
 CMakeFiles/3DMazeGame.dir/tiny_obj_loader.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3DMazeGame.dir/tiny_obj_loader.cc.s"
-	D:\vscode\x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\vscode\final\tiny_obj_loader.cc -o CMakeFiles\3DMazeGame.dir\tiny_obj_loader.cc.s
+	D:\vscode\x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\vscode\final\tiny_obj_loader.cc -o CMakeFiles\3DMazeGame.dir\tiny_obj_loader.cc.s
 
 # Object files for target 3DMazeGame
 3DMazeGame_OBJECTS = \

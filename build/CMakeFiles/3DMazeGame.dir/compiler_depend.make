@@ -159,7 +159,6 @@ CMakeFiles/3DMazeGame.dir/Camera.cpp.obj: D:/vscode/final/Camera.cpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/func_vector_relational.inl \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/qualifier.hpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/setup.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/type_float.hpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/type_half.hpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/type_half.inl \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/type_mat2x2.hpp \
@@ -180,8 +179,6 @@ CMakeFiles/3DMazeGame.dir/Camera.cpp.obj: D:/vscode/final/Camera.cpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/type_mat4x3.inl \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/type_mat4x4.hpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/type_mat4x4.inl \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/type_quat.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/type_quat.inl \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/type_vec1.hpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/type_vec1.inl \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/type_vec2.hpp \
@@ -233,20 +230,6 @@ CMakeFiles/3DMazeGame.dir/Camera.cpp.obj: D:/vscode/final/Camera.cpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/matrix_projection.inl \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/matrix_transform.hpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/matrix_transform.inl \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/quaternion_common.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/quaternion_common.inl \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/quaternion_double.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/quaternion_double_precision.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/quaternion_float.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/quaternion_float_precision.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/quaternion_geometric.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/quaternion_geometric.inl \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/quaternion_relational.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/quaternion_relational.inl \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/quaternion_transform.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/quaternion_transform.inl \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/quaternion_trigonometric.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/quaternion_trigonometric.inl \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/scalar_constants.hpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/scalar_constants.inl \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/scalar_int_sized.hpp \
@@ -275,8 +258,6 @@ CMakeFiles/3DMazeGame.dir/Camera.cpp.obj: D:/vscode/final/Camera.cpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/vector_int3_sized.hpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/vector_int4.hpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/vector_int4_sized.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/vector_relational.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/vector_relational.inl \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/vector_uint2.hpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/vector_uint2_sized.hpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/vector_uint3.hpp \
@@ -288,12 +269,8 @@ CMakeFiles/3DMazeGame.dir/Camera.cpp.obj: D:/vscode/final/Camera.cpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/glm.hpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/gtc/constants.hpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/gtc/constants.inl \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/gtc/epsilon.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/gtc/epsilon.inl \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/gtc/matrix_transform.hpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/gtc/matrix_transform.inl \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/gtc/quaternion.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/gtc/quaternion.inl \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/integer.hpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/mat2x2.hpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/mat2x3.hpp \
@@ -503,7 +480,6 @@ CMakeFiles/3DMazeGame.dir/VulkanContext.cpp.obj: D:/vscode/final/VulkanContext.c
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/func_vector_relational.inl \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/qualifier.hpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/setup.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/type_float.hpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/type_half.hpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/type_half.inl \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/type_mat2x2.hpp \
@@ -524,8 +500,6 @@ CMakeFiles/3DMazeGame.dir/VulkanContext.cpp.obj: D:/vscode/final/VulkanContext.c
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/type_mat4x3.inl \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/type_mat4x4.hpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/type_mat4x4.inl \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/type_quat.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/type_quat.inl \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/type_vec1.hpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/type_vec1.inl \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/type_vec2.hpp \
@@ -535,8 +509,6 @@ CMakeFiles/3DMazeGame.dir/VulkanContext.cpp.obj: D:/vscode/final/VulkanContext.c
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/type_vec4.hpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/type_vec4.inl \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/exponential.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/matrix_clip_space.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/matrix_clip_space.inl \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/matrix_double2x2.hpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/matrix_double2x2_precision.hpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/matrix_double2x3.hpp \
@@ -573,26 +545,6 @@ CMakeFiles/3DMazeGame.dir/VulkanContext.cpp.obj: D:/vscode/final/VulkanContext.c
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/matrix_float4x3_precision.hpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/matrix_float4x4.hpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/matrix_float4x4_precision.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/matrix_projection.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/matrix_projection.inl \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/matrix_transform.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/matrix_transform.inl \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/quaternion_common.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/quaternion_common.inl \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/quaternion_double.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/quaternion_double_precision.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/quaternion_float.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/quaternion_float_precision.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/quaternion_geometric.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/quaternion_geometric.inl \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/quaternion_relational.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/quaternion_relational.inl \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/quaternion_transform.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/quaternion_transform.inl \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/quaternion_trigonometric.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/quaternion_trigonometric.inl \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/scalar_constants.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/scalar_constants.inl \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/scalar_int_sized.hpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/scalar_uint_sized.hpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/vector_bool2.hpp \
@@ -619,8 +571,6 @@ CMakeFiles/3DMazeGame.dir/VulkanContext.cpp.obj: D:/vscode/final/VulkanContext.c
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/vector_int3_sized.hpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/vector_int4.hpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/vector_int4_sized.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/vector_relational.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/vector_relational.inl \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/vector_uint2.hpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/vector_uint2_sized.hpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/vector_uint3.hpp \
@@ -630,14 +580,6 @@ CMakeFiles/3DMazeGame.dir/VulkanContext.cpp.obj: D:/vscode/final/VulkanContext.c
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/fwd.hpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/geometric.hpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/glm.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/gtc/constants.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/gtc/constants.inl \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/gtc/epsilon.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/gtc/epsilon.inl \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/gtc/matrix_transform.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/gtc/matrix_transform.inl \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/gtc/quaternion.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/gtc/quaternion.inl \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/integer.hpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/mat2x2.hpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/mat2x3.hpp \
@@ -689,7 +631,6 @@ CMakeFiles/3DMazeGame.dir/VulkanContext.cpp.obj: D:/vscode/final/VulkanContext.c
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/vulkan/vulkan_core.h \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/wchar.h \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/wctype.h \
-  D:/vscode/final/Camera.h \
   D:/vscode/final/Types.h \
   D:/vscode/final/VulkanContext.h
 
@@ -864,7 +805,6 @@ CMakeFiles/3DMazeGame.dir/main.cpp.obj: D:/vscode/final/main.cpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/func_vector_relational.inl \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/qualifier.hpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/setup.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/type_float.hpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/type_half.hpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/type_half.inl \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/type_mat2x2.hpp \
@@ -885,8 +825,6 @@ CMakeFiles/3DMazeGame.dir/main.cpp.obj: D:/vscode/final/main.cpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/type_mat4x3.inl \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/type_mat4x4.hpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/type_mat4x4.inl \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/type_quat.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/type_quat.inl \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/type_vec1.hpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/type_vec1.inl \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/type_vec2.hpp \
@@ -938,20 +876,6 @@ CMakeFiles/3DMazeGame.dir/main.cpp.obj: D:/vscode/final/main.cpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/matrix_projection.inl \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/matrix_transform.hpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/matrix_transform.inl \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/quaternion_common.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/quaternion_common.inl \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/quaternion_double.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/quaternion_double_precision.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/quaternion_float.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/quaternion_float_precision.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/quaternion_geometric.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/quaternion_geometric.inl \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/quaternion_relational.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/quaternion_relational.inl \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/quaternion_transform.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/quaternion_transform.inl \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/quaternion_trigonometric.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/quaternion_trigonometric.inl \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/scalar_constants.hpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/scalar_constants.inl \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/scalar_int_sized.hpp \
@@ -980,8 +904,6 @@ CMakeFiles/3DMazeGame.dir/main.cpp.obj: D:/vscode/final/main.cpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/vector_int3_sized.hpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/vector_int4.hpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/vector_int4_sized.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/vector_relational.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/vector_relational.inl \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/vector_uint2.hpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/vector_uint2_sized.hpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/vector_uint3.hpp \
@@ -993,12 +915,8 @@ CMakeFiles/3DMazeGame.dir/main.cpp.obj: D:/vscode/final/main.cpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/glm.hpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/gtc/constants.hpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/gtc/constants.inl \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/gtc/epsilon.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/gtc/epsilon.inl \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/gtc/matrix_transform.hpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/gtc/matrix_transform.inl \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/gtc/quaternion.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/gtc/quaternion.inl \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/integer.hpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/mat2x2.hpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/mat2x3.hpp \
@@ -1202,8 +1120,6 @@ CMakeFiles/3DMazeGame.dir/model.cpp.obj: D:/vscode/final/model.cpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/stddef.h \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/stdint.h \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/syslimits.h \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/GL/gl.h \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/GLFW/glfw3.h \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/_mingw.h \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/_mingw_mac.h \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/_mingw_off_t.h \
@@ -1232,7 +1148,6 @@ CMakeFiles/3DMazeGame.dir/model.cpp.obj: D:/vscode/final/model.cpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/func_vector_relational.inl \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/qualifier.hpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/setup.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/type_float.hpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/type_half.hpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/type_half.inl \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/type_mat2x2.hpp \
@@ -1253,8 +1168,6 @@ CMakeFiles/3DMazeGame.dir/model.cpp.obj: D:/vscode/final/model.cpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/type_mat4x3.inl \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/type_mat4x4.hpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/type_mat4x4.inl \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/type_quat.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/type_quat.inl \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/type_vec1.hpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/type_vec1.inl \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/type_vec2.hpp \
@@ -1264,8 +1177,6 @@ CMakeFiles/3DMazeGame.dir/model.cpp.obj: D:/vscode/final/model.cpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/type_vec4.hpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/type_vec4.inl \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/exponential.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/matrix_clip_space.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/matrix_clip_space.inl \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/matrix_double2x2.hpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/matrix_double2x2_precision.hpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/matrix_double2x3.hpp \
@@ -1302,26 +1213,6 @@ CMakeFiles/3DMazeGame.dir/model.cpp.obj: D:/vscode/final/model.cpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/matrix_float4x3_precision.hpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/matrix_float4x4.hpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/matrix_float4x4_precision.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/matrix_projection.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/matrix_projection.inl \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/matrix_transform.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/matrix_transform.inl \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/quaternion_common.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/quaternion_common.inl \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/quaternion_double.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/quaternion_double_precision.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/quaternion_float.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/quaternion_float_precision.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/quaternion_geometric.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/quaternion_geometric.inl \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/quaternion_relational.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/quaternion_relational.inl \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/quaternion_transform.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/quaternion_transform.inl \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/quaternion_trigonometric.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/quaternion_trigonometric.inl \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/scalar_constants.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/scalar_constants.inl \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/scalar_int_sized.hpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/scalar_uint_sized.hpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/vector_bool2.hpp \
@@ -1348,8 +1239,6 @@ CMakeFiles/3DMazeGame.dir/model.cpp.obj: D:/vscode/final/model.cpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/vector_int3_sized.hpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/vector_int4.hpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/vector_int4_sized.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/vector_relational.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/vector_relational.inl \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/vector_uint2.hpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/vector_uint2_sized.hpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/vector_uint3.hpp \
@@ -1359,14 +1248,6 @@ CMakeFiles/3DMazeGame.dir/model.cpp.obj: D:/vscode/final/model.cpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/fwd.hpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/geometric.hpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/glm.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/gtc/constants.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/gtc/constants.inl \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/gtc/epsilon.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/gtc/epsilon.inl \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/gtc/matrix_transform.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/gtc/matrix_transform.inl \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/gtc/quaternion.hpp \
-  D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/gtc/quaternion.inl \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/integer.hpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/mat2x2.hpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/mat2x3.hpp \
@@ -1416,7 +1297,6 @@ CMakeFiles/3DMazeGame.dir/model.cpp.obj: D:/vscode/final/model.cpp \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/vulkan/vulkan_core.h \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/wchar.h \
   D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/wctype.h \
-  D:/vscode/final/Camera.h \
   D:/vscode/final/Types.h \
   D:/vscode/final/model.h \
   D:/vscode/final/tiny_obj_loader.h
@@ -1671,8 +1551,6 @@ D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/lib/gcc/x86_6
 D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/c++/tr1/beta_function.tcc:
 
 D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/c++/bits/uses_allocator.h:
-
-D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/quaternion_common.hpp:
 
 D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/c++/bits/charconv.h:
 
@@ -1960,8 +1838,6 @@ D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/lib/gcc/x86_6
 
 D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/float.h:
 
-D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/quaternion_double_precision.hpp:
-
 D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/limits.h:
 
 D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/stddef.h:
@@ -1977,8 +1853,6 @@ D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mi
 D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/_mingw.h:
 
 D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/_mingw_mac.h:
-
-D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/gtc/epsilon.inl:
 
 D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/_mingw_secapi.h:
 
@@ -2019,12 +1893,6 @@ D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mi
 D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/qualifier.hpp:
 
 D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/setup.hpp:
-
-D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/c++/fstream:
-
-D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/matrix_double2x3_precision.hpp:
-
-D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/type_float.hpp:
 
 D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/c++/ctime:
 
@@ -2080,12 +1948,6 @@ D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/lib/gcc/x86_6
 
 D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/type_mat4x4.inl:
 
-D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/type_quat.hpp:
-
-D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/stdint.h:
-
-D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/type_quat.inl:
-
 D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/type_vec1.hpp:
 
 D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/detail/type_vec2.hpp:
@@ -2113,6 +1975,10 @@ D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mi
 D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/matrix_double2x2.hpp:
 
 D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/matrix_double2x3.hpp:
+
+D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/c++/fstream:
+
+D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/matrix_double2x3_precision.hpp:
 
 D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/matrix_double2x4.hpp:
 
@@ -2192,38 +2058,6 @@ D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mi
 
 D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/matrix_transform.inl:
 
-D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/quaternion_common.inl:
-
-D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/quaternion_double.hpp:
-
-D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/quaternion_float.hpp:
-
-D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/time.h:
-
-D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/quaternion_float_precision.hpp:
-
-D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/quaternion_geometric.hpp:
-
-D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/vk_video/vulkan_video_codec_h264std.h:
-
-D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/quaternion_geometric.inl:
-
-D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/quaternion_relational.hpp:
-
-D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/quaternion_relational.inl:
-
-D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/c++/set:
-
-D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/fwd.hpp:
-
-D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/quaternion_transform.hpp:
-
-D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/quaternion_transform.inl:
-
-D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/quaternion_trigonometric.hpp:
-
-D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/quaternion_trigonometric.inl:
-
 D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/scalar_int_sized.hpp:
 
 D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/scalar_uint_sized.hpp:
@@ -2268,12 +2102,6 @@ D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mi
 
 D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/vector_int4_sized.hpp:
 
-D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/c++/bits/enable_special_members.h:
-
-D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/vector_relational.hpp:
-
-D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/vector_relational.inl:
-
 D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/vector_uint3.hpp:
 
 D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/vector_uint3_sized.hpp:
@@ -2282,15 +2110,13 @@ D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mi
 
 D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/ext/vector_uint4_sized.hpp:
 
+D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/c++/set:
+
+D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/fwd.hpp:
+
 D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/geometric.hpp:
 
 D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/gtc/constants.hpp:
-
-D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/gtc/epsilon.hpp:
-
-D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/gtc/quaternion.hpp:
-
-D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/gtc/quaternion.inl:
 
 D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/glm/integer.hpp:
 
@@ -2323,6 +2149,8 @@ D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mi
 D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/sec_api/sys/timeb_s.h:
 
 D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/sec_api/wchar_s.h:
+
+D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/stdint.h:
 
 D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/stdio.h:
 
@@ -2358,6 +2186,8 @@ D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mi
 
 D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/vk_video/vulkan_video_codec_av1std_encode.h:
 
+D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/vk_video/vulkan_video_codec_h264std.h:
+
 D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/vk_video/vulkan_video_codec_h264std_encode.h:
 
 D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/vk_video/vulkan_video_codec_h265std_decode.h:
@@ -2372,7 +2202,11 @@ D:/vscode/final/main.cpp:
 
 D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/pthread_time.h:
 
+D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/x86_64-w64-mingw32/include/time.h:
+
 D:/vscode/final/model.h:
+
+D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/c++/bits/enable_special_members.h:
 
 D:/vscode/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/c++/bits/stl_tree.h:
 

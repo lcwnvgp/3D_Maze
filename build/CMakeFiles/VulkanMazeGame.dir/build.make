@@ -76,75 +76,75 @@ CMakeFiles/VulkanMazeGame.dir/main.cpp.obj: CMakeFiles/VulkanMazeGame.dir/includ
 CMakeFiles/VulkanMazeGame.dir/main.cpp.obj: D:/vscode/final/main.cpp
 CMakeFiles/VulkanMazeGame.dir/main.cpp.obj: CMakeFiles/VulkanMazeGame.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\vscode\final\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/VulkanMazeGame.dir/main.cpp.obj"
-	D:\vscode\x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/VulkanMazeGame.dir/main.cpp.obj -MF CMakeFiles\VulkanMazeGame.dir\main.cpp.obj.d -o CMakeFiles\VulkanMazeGame.dir\main.cpp.obj -c D:\vscode\final\main.cpp
+	D:\vscode\x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/VulkanMazeGame.dir/main.cpp.obj -MF CMakeFiles\VulkanMazeGame.dir\main.cpp.obj.d -o CMakeFiles\VulkanMazeGame.dir\main.cpp.obj -c D:\vscode\final\main.cpp
 
 CMakeFiles/VulkanMazeGame.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/VulkanMazeGame.dir/main.cpp.i"
-	D:\vscode\x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\vscode\final\main.cpp > CMakeFiles\VulkanMazeGame.dir\main.cpp.i
+	D:\vscode\x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\vscode\final\main.cpp > CMakeFiles\VulkanMazeGame.dir\main.cpp.i
 
 CMakeFiles/VulkanMazeGame.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/VulkanMazeGame.dir/main.cpp.s"
-	D:\vscode\x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\vscode\final\main.cpp -o CMakeFiles\VulkanMazeGame.dir\main.cpp.s
+	D:\vscode\x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\vscode\final\main.cpp -o CMakeFiles\VulkanMazeGame.dir\main.cpp.s
 
 CMakeFiles/VulkanMazeGame.dir/VulkanContext.cpp.obj: CMakeFiles/VulkanMazeGame.dir/flags.make
 CMakeFiles/VulkanMazeGame.dir/VulkanContext.cpp.obj: CMakeFiles/VulkanMazeGame.dir/includes_CXX.rsp
 CMakeFiles/VulkanMazeGame.dir/VulkanContext.cpp.obj: D:/vscode/final/VulkanContext.cpp
 CMakeFiles/VulkanMazeGame.dir/VulkanContext.cpp.obj: CMakeFiles/VulkanMazeGame.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\vscode\final\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/VulkanMazeGame.dir/VulkanContext.cpp.obj"
-	D:\vscode\x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/VulkanMazeGame.dir/VulkanContext.cpp.obj -MF CMakeFiles\VulkanMazeGame.dir\VulkanContext.cpp.obj.d -o CMakeFiles\VulkanMazeGame.dir\VulkanContext.cpp.obj -c D:\vscode\final\VulkanContext.cpp
+	D:\vscode\x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/VulkanMazeGame.dir/VulkanContext.cpp.obj -MF CMakeFiles\VulkanMazeGame.dir\VulkanContext.cpp.obj.d -o CMakeFiles\VulkanMazeGame.dir\VulkanContext.cpp.obj -c D:\vscode\final\VulkanContext.cpp
 
 CMakeFiles/VulkanMazeGame.dir/VulkanContext.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/VulkanMazeGame.dir/VulkanContext.cpp.i"
-	D:\vscode\x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\vscode\final\VulkanContext.cpp > CMakeFiles\VulkanMazeGame.dir\VulkanContext.cpp.i
+	D:\vscode\x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\vscode\final\VulkanContext.cpp > CMakeFiles\VulkanMazeGame.dir\VulkanContext.cpp.i
 
 CMakeFiles/VulkanMazeGame.dir/VulkanContext.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/VulkanMazeGame.dir/VulkanContext.cpp.s"
-	D:\vscode\x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\vscode\final\VulkanContext.cpp -o CMakeFiles\VulkanMazeGame.dir\VulkanContext.cpp.s
+	D:\vscode\x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\vscode\final\VulkanContext.cpp -o CMakeFiles\VulkanMazeGame.dir\VulkanContext.cpp.s
 
 CMakeFiles/VulkanMazeGame.dir/model.cpp.obj: CMakeFiles/VulkanMazeGame.dir/flags.make
 CMakeFiles/VulkanMazeGame.dir/model.cpp.obj: CMakeFiles/VulkanMazeGame.dir/includes_CXX.rsp
 CMakeFiles/VulkanMazeGame.dir/model.cpp.obj: D:/vscode/final/model.cpp
 CMakeFiles/VulkanMazeGame.dir/model.cpp.obj: CMakeFiles/VulkanMazeGame.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\vscode\final\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/VulkanMazeGame.dir/model.cpp.obj"
-	D:\vscode\x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/VulkanMazeGame.dir/model.cpp.obj -MF CMakeFiles\VulkanMazeGame.dir\model.cpp.obj.d -o CMakeFiles\VulkanMazeGame.dir\model.cpp.obj -c D:\vscode\final\model.cpp
+	D:\vscode\x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/VulkanMazeGame.dir/model.cpp.obj -MF CMakeFiles\VulkanMazeGame.dir\model.cpp.obj.d -o CMakeFiles\VulkanMazeGame.dir\model.cpp.obj -c D:\vscode\final\model.cpp
 
 CMakeFiles/VulkanMazeGame.dir/model.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/VulkanMazeGame.dir/model.cpp.i"
-	D:\vscode\x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\vscode\final\model.cpp > CMakeFiles\VulkanMazeGame.dir\model.cpp.i
+	D:\vscode\x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\vscode\final\model.cpp > CMakeFiles\VulkanMazeGame.dir\model.cpp.i
 
 CMakeFiles/VulkanMazeGame.dir/model.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/VulkanMazeGame.dir/model.cpp.s"
-	D:\vscode\x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\vscode\final\model.cpp -o CMakeFiles\VulkanMazeGame.dir\model.cpp.s
+	D:\vscode\x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\vscode\final\model.cpp -o CMakeFiles\VulkanMazeGame.dir\model.cpp.s
 
 CMakeFiles/VulkanMazeGame.dir/Camera.cpp.obj: CMakeFiles/VulkanMazeGame.dir/flags.make
 CMakeFiles/VulkanMazeGame.dir/Camera.cpp.obj: CMakeFiles/VulkanMazeGame.dir/includes_CXX.rsp
 CMakeFiles/VulkanMazeGame.dir/Camera.cpp.obj: D:/vscode/final/Camera.cpp
 CMakeFiles/VulkanMazeGame.dir/Camera.cpp.obj: CMakeFiles/VulkanMazeGame.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\vscode\final\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/VulkanMazeGame.dir/Camera.cpp.obj"
-	D:\vscode\x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/VulkanMazeGame.dir/Camera.cpp.obj -MF CMakeFiles\VulkanMazeGame.dir\Camera.cpp.obj.d -o CMakeFiles\VulkanMazeGame.dir\Camera.cpp.obj -c D:\vscode\final\Camera.cpp
+	D:\vscode\x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/VulkanMazeGame.dir/Camera.cpp.obj -MF CMakeFiles\VulkanMazeGame.dir\Camera.cpp.obj.d -o CMakeFiles\VulkanMazeGame.dir\Camera.cpp.obj -c D:\vscode\final\Camera.cpp
 
 CMakeFiles/VulkanMazeGame.dir/Camera.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/VulkanMazeGame.dir/Camera.cpp.i"
-	D:\vscode\x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\vscode\final\Camera.cpp > CMakeFiles\VulkanMazeGame.dir\Camera.cpp.i
+	D:\vscode\x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\vscode\final\Camera.cpp > CMakeFiles\VulkanMazeGame.dir\Camera.cpp.i
 
 CMakeFiles/VulkanMazeGame.dir/Camera.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/VulkanMazeGame.dir/Camera.cpp.s"
-	D:\vscode\x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\vscode\final\Camera.cpp -o CMakeFiles\VulkanMazeGame.dir\Camera.cpp.s
+	D:\vscode\x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\vscode\final\Camera.cpp -o CMakeFiles\VulkanMazeGame.dir\Camera.cpp.s
 
 CMakeFiles/VulkanMazeGame.dir/tiny_obj_loader.cc.obj: CMakeFiles/VulkanMazeGame.dir/flags.make
 CMakeFiles/VulkanMazeGame.dir/tiny_obj_loader.cc.obj: CMakeFiles/VulkanMazeGame.dir/includes_CXX.rsp
 CMakeFiles/VulkanMazeGame.dir/tiny_obj_loader.cc.obj: D:/vscode/final/tiny_obj_loader.cc
 CMakeFiles/VulkanMazeGame.dir/tiny_obj_loader.cc.obj: CMakeFiles/VulkanMazeGame.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\vscode\final\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/VulkanMazeGame.dir/tiny_obj_loader.cc.obj"
-	D:\vscode\x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/VulkanMazeGame.dir/tiny_obj_loader.cc.obj -MF CMakeFiles\VulkanMazeGame.dir\tiny_obj_loader.cc.obj.d -o CMakeFiles\VulkanMazeGame.dir\tiny_obj_loader.cc.obj -c D:\vscode\final\tiny_obj_loader.cc
+	D:\vscode\x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/VulkanMazeGame.dir/tiny_obj_loader.cc.obj -MF CMakeFiles\VulkanMazeGame.dir\tiny_obj_loader.cc.obj.d -o CMakeFiles\VulkanMazeGame.dir\tiny_obj_loader.cc.obj -c D:\vscode\final\tiny_obj_loader.cc
 
 CMakeFiles/VulkanMazeGame.dir/tiny_obj_loader.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/VulkanMazeGame.dir/tiny_obj_loader.cc.i"
-	D:\vscode\x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\vscode\final\tiny_obj_loader.cc > CMakeFiles\VulkanMazeGame.dir\tiny_obj_loader.cc.i
+	D:\vscode\x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\vscode\final\tiny_obj_loader.cc > CMakeFiles\VulkanMazeGame.dir\tiny_obj_loader.cc.i
 
 CMakeFiles/VulkanMazeGame.dir/tiny_obj_loader.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/VulkanMazeGame.dir/tiny_obj_loader.cc.s"
-	D:\vscode\x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\vscode\final\tiny_obj_loader.cc -o CMakeFiles\VulkanMazeGame.dir\tiny_obj_loader.cc.s
+	D:\vscode\x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev2\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\vscode\final\tiny_obj_loader.cc -o CMakeFiles\VulkanMazeGame.dir\tiny_obj_loader.cc.s
 
 # Object files for target VulkanMazeGame
 VulkanMazeGame_OBJECTS = \
