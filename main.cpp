@@ -23,6 +23,10 @@
 // at the top of imgui.cpp.
 
 #include <array>
+#include <string>
+#include <iostream>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtx/string_cast.hpp>
 
 #define IMGUI_DEFINE_MATH_OPERATORS
 #include "backends/imgui_impl_glfw.h"
@@ -89,7 +93,7 @@ int main(int argc, char** argv)
     return 1;
   }
   glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
-  GLFWwindow* window = glfwCreateWindow(SAMPLE_WIDTH, SAMPLE_HEIGHT, PROJECT_NAME, nullptr, nullptr);
+  GLFWwindow* window = glfwCreateWindow(SAMPLE_WIDTH, SAMPLE_HEIGHT, "3DMazeGame", nullptr, nullptr);
 
 
   // Setup camera
@@ -104,7 +108,7 @@ int main(int argc, char** argv)
   }
 
   // setup some basic things for the sample, logging file for example
-  NVPSystem system(PROJECT_NAME);
+  NVPSystem system("3DMazeGame");
 
   // Search path for shaders and other media
   defaultSearchPaths = {
@@ -123,7 +127,7 @@ int main(int argc, char** argv)
   contextInfo.setVersion(1, 2);                       // Using Vulkan 1.2
   for(uint32_t ext_id = 0; ext_id < count; ext_id++)  // Adding required extensions (surface, win32, linux, ..)
     contextInfo.addInstanceExtension(reqExtensions[ext_id]);
-  contextInfo.addInstanceLayer("VK_LAYER_LUNARG_monitor", true);              // FPS in titlebar
+  // contextInfo.addInstanceLayer("VK_LAYER_LUNARG_monitor", true);              // FPS in titlebar
   contextInfo.addInstanceExtension(VK_EXT_DEBUG_UTILS_EXTENSION_NAME, true);  // Allow debug names
   contextInfo.addDeviceExtension(VK_KHR_SWAPCHAIN_EXTENSION_NAME);            // Enabling ability to present rendering
 
@@ -160,12 +164,18 @@ int main(int argc, char** argv)
   helloVk.initGUI(0);  // Using sub-pass 0
 
   // Creation of the example
-  // Load maze model at world origin
-  helloVk.loadModel(nvh::findFile("media/scenes/maze.obj", defaultSearchPaths, true), glm::mat4(1.0f));
-  // Load sphere model with initial position above maze
-  glm::vec3 sphereStart{0.0f, 1.0f, 0.0f};
-  helloVk.loadModel(nvh::findFile("media/scenes/mysphere.obj", defaultSearchPaths, true),
-                   glm::translate(glm::mat4(1.0f), sphereStart));
+  helloVk.loadModel(nvh::findFile("media/scenes/maze.obj", defaultSearchPaths, true));
+  helloVk.loadModel(nvh::findFile("media/scenes/mysphere.obj", defaultSearchPaths, true));
+  // helloVk.initMazeTris();
+
+  // 初始 transform
+  helloVk.m_instances.resize(2);
+  // 迷宫放在原点
+  helloVk.m_instances[0].transform = glm::mat4(1.0f);
+  // 小球放到迷宫入口上方
+  glm::vec3 ballStart = {0.0f, 0.0f, 0.0f};
+  helloVk.m_instances[1].transform = glm::translate(glm::mat4(1.0f), ballStart)
+                                 * glm::scale(glm::mat4(1.0f), glm::vec3(1.0f));  // 假设半径0.1
 
   helloVk.createOffscreenRender();
   helloVk.createDescriptorSetLayout();
@@ -194,12 +204,112 @@ int main(int argc, char** argv)
   helloVk.setupGlfwCallbacks(window);
   ImGui_ImplGlfw_InitForVulkan(window, true);
 
+
+  // -- 物理状态 --
+  glm::vec3 ballPos = ballStart;
+  glm::vec3 ballVel = {0,0,0};
+  float     ballRadius   = 1.0f;
+  const glm::vec3 GRAV = {0,-9.81f,0};
+  const float μ = 0.2f;        // 摩擦系数
+  const float e = 0.5f;        // 碰撞反弹系数
+
+  float g_tiltX = 0.0f, g_tiltZ = 0.0f;
+  const float g_speed = glm::radians(30.0f); 
+  double lastTime = glfwGetTime();
+
   // Main loop
   while(!glfwWindowShouldClose(window))
   {
     glfwPollEvents();
     if(helloVk.isMinimized())
       continue;
+
+    double now = glfwGetTime();
+    float  dt  = float(now - lastTime);
+    lastTime   = now;
+
+    // 5.2) 轮询按键，持续累加倾斜角度
+    if(glfwGetKey(window, GLFW_KEY_W)==GLFW_PRESS) g_tiltX += g_speed*dt;
+    if(glfwGetKey(window, GLFW_KEY_S)==GLFW_PRESS) g_tiltX -= g_speed*dt;
+    if(glfwGetKey(window, GLFW_KEY_D)==GLFW_PRESS) g_tiltZ += g_speed*dt;
+    if(glfwGetKey(window, GLFW_KEY_A)==GLFW_PRESS) g_tiltZ -= g_speed*dt;
+
+    glm::vec3 mazePos = glm::vec3(helloVk.m_instances[0].transform[3]);
+
+    glm::mat4 T1       = glm::translate(glm::mat4(1.0f), -mazePos);
+    glm::mat4 RtiltX   = glm::rotate(glm::mat4(1.0f), g_tiltX, glm::vec3(1, 0, 0));
+    glm::mat4 RtiltZ   = glm::rotate(glm::mat4(1.0f), g_tiltZ, glm::vec3(0, 0, 1));
+    glm::mat4 T2       = glm::translate(glm::mat4(1.0f), mazePos);
+
+    glm::mat4 R = T2 * RtiltZ * RtiltX * T1;
+    helloVk.m_instances[0].transform = R;
+
+    // —— 球的物理——
+    // 1) 计算地面法线
+    glm::vec3 n = glm::normalize(glm::vec3(R * glm::vec4(0,1,0,0)));
+    // 2) 重力分力 + 摩擦
+    glm::vec3 a = GRAV - glm::dot(GRAV,n)*n - μ*ballVel;
+    // 3) 更新速度/位置
+    ballVel += a*dt;
+    glm::vec3 next = ballPos + ballVel*dt;
+    // 4) 简单碰撞：对 maze 中每三角形检测穿透（略——用库或自己写）
+    //    这里只做示意：如果 y < 球半径，就弹回:
+    int subSteps = 5;                              // 细分几步可以根据速度再调高
+float dt   = dt / float(subSteps);
+    for(int step = 0; step < subSteps; ++step)
+{
+  // …（前面不变：更新 R，计算 a、更新 ballVel，预测 candidate）…
+
+  bool collidedThisSubstep = false;
+
+  for(size_t ti = 0; ti < helloVk.mazeTris.size(); ++ti)
+  {
+    const auto& tri = helloVk.mazeTris[ti];
+    glm::vec3 p = helloVk.closestPointTriangle(next, tri.a, tri.b, tri.c);
+    glm::vec3 v = next - p;
+    float d2 = glm::dot(v,v);
+    if(d2 < ballRadius * ballRadius)
+    {
+      // 打印一下
+      std::cout << "[Substep " << step
+                << "] collision! triangle #" << ti
+                << "  d²=" << d2
+                << "  ballPos=" << glm::to_string(ballPos)
+                << "  next=" << glm::to_string(next)
+                << std::endl;
+
+      float d = std::sqrt(d2);
+      glm::vec3 contactN = (d > 1e-6f ? v/d : glm::vec3(0,1,0));
+      next += contactN * (ballRadius - d);
+      ballVel   -= (1.0f + e) * glm::dot(ballVel, contactN) * contactN;
+
+      collidedThisSubstep = true;
+    }
+  }
+
+  if(!collidedThisSubstep)
+  {
+    std::cout << "[Substep " << step << "] no collision, move to " 
+              << glm::to_string(next) << std::endl;
+  }
+
+  ballPos = next;
+}
+
+    // 更新小球实例 transform
+    helloVk.m_instances[1].transform =
+      glm::translate(glm::mat4(1.0f), ballPos)
+      * glm::scale(glm::mat4(1.0f), glm::vec3(ballRadius));
+
+    
+    helloVk.createObjDescriptionBuffer();
+    helloVk.updateDescriptorSet();
+
+    if(useRaytracer)
+    {
+      helloVk.createTopLevelAS();
+      helloVk.updateRtDescriptorSet();
+    }
 
     // Start the Dear ImGui frame
     ImGui_ImplGlfw_NewFrame();

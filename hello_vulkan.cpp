@@ -201,6 +201,19 @@ void HelloVulkan::loadModel(const std::string& filename, glm::mat4 transform)
   ObjModel model;
   model.nbIndices  = static_cast<uint32_t>(loader.m_indices.size());
   model.nbVertices = static_cast<uint32_t>(loader.m_vertices.size());
+  model.hostVertices = loader.m_vertices;
+  model.hostIndices  = loader.m_indices;
+
+  if (filename.find("maze.obj") != std::string::npos) {
+    mazeTris.clear();
+    for (size_t i = 0; i < model.hostIndices.size(); i += 3) {
+      auto &V = model.hostVertices;
+      uint32_t i0 = model.hostIndices[i + 0];
+      uint32_t i1 = model.hostIndices[i + 1];
+      uint32_t i2 = model.hostIndices[i + 2];
+      mazeTris.push_back({ V[i0].pos, V[i1].pos, V[i2].pos });
+    }
+  }
 
   // Create the buffers on Device and copy vertices, indices and materials
   nvvk::CommandPool  cmdBufGet(m_device, m_graphicsQueueIndex);
@@ -717,10 +730,19 @@ void HelloVulkan::createRtDescriptorSet()
 //
 void HelloVulkan::updateRtDescriptorSet()
 {
+  std::vector<VkWriteDescriptorSet> writes;
   // (1) Output buffer
   VkDescriptorImageInfo imageInfo{{}, m_offscreenColor.descriptor.imageView, VK_IMAGE_LAYOUT_GENERAL};
-  VkWriteDescriptorSet  wds = m_rtDescSetLayoutBind.makeWrite(m_rtDescSet, RtxBindings::eOutImage, &imageInfo);
-  vkUpdateDescriptorSets(m_device, 1, &wds, 0, nullptr);
+  writes.push_back(m_rtDescSetLayoutBind.makeWrite(m_rtDescSet, RtxBindings::eOutImage, &imageInfo));  
+
+  // (2) update TLAS descriptor
+  VkAccelerationStructureKHR tlas = m_rtBuilder.getAccelerationStructure();
+  VkWriteDescriptorSetAccelerationStructureKHR descASInfo{VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET_ACCELERATION_STRUCTURE_KHR};
+  descASInfo.accelerationStructureCount = 1;
+  descASInfo.pAccelerationStructures    = &tlas;
+  writes.push_back(m_rtDescSetLayoutBind.makeWrite(m_rtDescSet, RtxBindings::eTlas, &descASInfo));
+
+  vkUpdateDescriptorSets(m_device, (uint32_t)writes.size(), writes.data(), 0, nullptr);
 }
 
 
@@ -933,4 +955,57 @@ void HelloVulkan::raytrace(const VkCommandBuffer& cmdBuf, const glm::vec4& clear
 
 
   m_debug.endLabel(cmdBuf);
+}
+
+glm::vec3 HelloVulkan::closestPointTriangle(const glm::vec3& P, const glm::vec3& A, const glm::vec3& B, const glm::vec3& C)
+{
+  glm::vec3 AB = B - A, AC = C - A, AP = P - A;
+  float d1 = glm::dot(AB, AP), d2 = glm::dot(AC, AP);
+  if(d1 <= 0 && d2 <= 0) return A;
+  glm::vec3 BP = P - B; float d3 = glm::dot(AB, BP), d4 = glm::dot(AC, BP);
+  if(d3 >= 0 && d4 <= d3) return B;
+  glm::vec3 CP = P - C; float d5 = glm::dot(AB, CP), d6 = glm::dot(AC, CP);
+  if(d6 >= 0 && d5 <= d6) return C;
+  // 投影到边 AB
+  float vc = d1*d4 - d3*d2;
+  if(vc <= 0 && d1 >= 0 && d3 <= 0) {
+    float v = d1 / (d1 - d3);
+    return A + v * AB;
+  }
+  // 投影到边 AC
+  float vb = d5*d2 - d1*d6;
+  if(vb <= 0 && d2 >= 0 && d6 <= 0) {
+    float w = d2 / (d2 - d6);
+    return A + w * AC;
+  }
+  // 投影到边 BC
+  float va = d3*d6 - d5*d4;
+  if(va <= 0 && (d4 - d3) >= 0 && (d5 - d6) >= 0) {
+    float w = (d4 - d3) / ((d4 - d3) + (d5 - d6));
+    return B + w * (C - B);
+  }
+  // 面内部
+  glm::vec3 N = glm::cross(AB, AC);
+  float dist = glm::dot(AP, N) / glm::length(N);
+  return P - dist * glm::normalize(N);
+}
+
+void HelloVulkan::initMazeTris()
+{
+  auto& model = m_objModel[0];  // 迷宫
+  // 假设 Vertex 类型里有 glm::vec3 pos;
+  void*  v     = m_alloc.map(model.vertexBuffer);
+  Vertex*   vtxPtr = reinterpret_cast<Vertex*>(v);
+  void*  i     = m_alloc.map(model.indexBuffer);
+  uint32_t* idxPtr = reinterpret_cast<uint32_t*>(i);
+  for(uint32_t i = 0; i < model.nbIndices; i += 3)
+  {
+    mazeTris.push_back({
+      vtxPtr[idxPtr[i+0]].pos,
+      vtxPtr[idxPtr[i+1]].pos,
+      vtxPtr[idxPtr[i+2]].pos
+    });
+  }
+  m_alloc.unmap(model.vertexBuffer);
+  m_alloc.unmap(model.indexBuffer);
 }

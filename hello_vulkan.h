@@ -25,6 +25,7 @@
 #include "nvvk/memallocator_dma_vk.hpp"
 #include "nvvk/resourceallocator_vk.hpp"
 #include "shaders/host_device.h"
+#include "obj_loader.h"
 
 // #VKRay
 #include "nvvk/raytraceKHR_vk.hpp"
@@ -61,6 +62,8 @@ public:
     nvvk::Buffer indexBuffer;     // Device buffer of the indices forming triangles
     nvvk::Buffer matColorBuffer;  // Device buffer of array of 'Wavefront material'
     nvvk::Buffer matIndexBuffer;  // Device buffer of array of 'Wavefront material'
+    std::vector<VertexObj> hostVertices;
+    std::vector<uint32_t>  hostIndices;
   };
 
   struct ObjInstance
@@ -69,6 +72,8 @@ public:
     uint32_t  objIndex{0};  // Model index reference
   };
 
+  struct Triangle { glm::vec3 a, b, c; };
+  std::vector<Triangle> mazeTris;
 
   // Information pushed at each draw call
   PushConstantRaster m_pcRaster{
@@ -102,6 +107,8 @@ public:
   nvvk::ResourceAllocatorDma m_alloc;  // Allocator for buffer, images, acceleration structures
   nvvk::DebugUtil            m_debug;  // Utility to name objects
 
+  glm::vec3 closestPointTriangle(const glm::vec3& P, const glm::vec3& A, const glm::vec3& B, const glm::vec3& C);
+  void initMazeTris();
 
   // #Post - Draw the rendered image on a quad using a tonemapper
   void createOffscreenRender();
