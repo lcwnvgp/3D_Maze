@@ -422,7 +422,7 @@ bool Model::checkSphereCollision(const glm::vec3& center, float radius,
                              const glm::mat4& modelMatrix, 
                              std::vector<CollisionInfo>& collisions,
                              std::vector<CollisionImpulse>& impulses,
-                             const glm::vec3& velocity,
+                             const glm::vec3& velocityQ,
                              float restitution) {
     // 1. 更新AABB
     updateBoundingBox(modelMatrix);
@@ -439,7 +439,7 @@ bool Model::checkSphereCollision(const glm::vec3& center, float radius,
     if (hasCollision) {
         for (const auto& collision : collisions) {
             // 计算速度在法线方向的分量
-            float velocityAlongNormal = glm::dot(velocity, collision.normal);
+            float velocityAlongNormal = glm::dot(velocityQ, collision.normal);
             
             // 如果速度已经沿法线方向远离，跳过冲量计算
             if (velocityAlongNormal > 0)

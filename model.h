@@ -39,15 +39,17 @@ public:
 
     const std::vector<Vertex>& GetVertices() const { return vertices; }
     const std::vector<uint32_t>& GetIndices() const { return indices; }
+    float mass=-1;
+    glm::vec3 velocity = glm::vec3(0.0f);
 
     // 碰撞检测相关方法
     void initCollisionData();
     void updateBoundingBox(const glm::mat4& transform);
-    bool checkSphereCollision(const glm::vec3& center, float radius, 
+    bool checkSphereCollision(const glm::vec3& center, float radius,
                          const glm::mat4& modelMatrix,
                          std::vector<CollisionInfo>& collisions,
                          std::vector<CollisionImpulse>& impulses,
-                         const glm::vec3& velocity = glm::vec3(0.0f),
+                         const glm::vec3& velocityQ = glm::vec3(0.0f),
                          float restitution = 0.7f);
 
 private:
