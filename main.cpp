@@ -92,6 +92,10 @@ int main() {
             VkCommandBuffer commandBuffer = context.beginRenderPass();
 
             glm::mat4 modelMatrix_sphere = sphereModel.updatePhysicalStates(deltaTime);
+//            std::cout << "-----------------------------" << std::endl;
+//            std::cout << "(" << sphereModel.velocity.x << ", " << sphereModel.velocity.y << ", " << sphereModel.velocity.z << ")" << std::endl;
+//            std::cout << "(" << sphereModel.acceleration.x << ", " << sphereModel.acceleration.y << ", " << sphereModel.acceleration.z << ")" << std::endl;
+//            std::cout << "-----------------------------" << std::endl;
 
             if (glfwGetKey(context.getWindow(), GLFW_KEY_W) == GLFW_PRESS) {
                 tiltDegX += 1.0f;
@@ -99,7 +103,7 @@ int main() {
             } else if (glfwGetKey(context.getWindow(), GLFW_KEY_S) == GLFW_PRESS) {
                 tiltDegX -= 1.0f;
                 if (tiltDegX < -30) tiltDegX = -30;
-            } else { tiltDegX = 0; }
+            }
 
             if (glfwGetKey(context.getWindow(), GLFW_KEY_D) == GLFW_PRESS) {
                 tiltDegZ += 1.0f;
@@ -107,7 +111,7 @@ int main() {
             } else if (glfwGetKey(context.getWindow(), GLFW_KEY_A) == GLFW_PRESS) {
                 tiltDegZ -= 1.0f;
                 if (tiltDegZ < -30) tiltDegZ = -30;
-            } else { tiltDegZ = 0; }
+            }
 
             glm::quat rotationQuat = glm::angleAxis(glm::radians(tiltDegX),
                                                     glm::vec3 (1.0f, 0.0f, 0.0f));
@@ -117,33 +121,55 @@ int main() {
 
             std::vector<CollisionInfo> collisions;
             std::vector<CollisionImpulse> impulses;
+            glm::mat4 modelMatrix_maze = glm::mat4(1.0f);
+//            modelMatrix_maze = glm::scale(modelMatrix_maze, glm::vec3(2.0f, 2.0f, 2.0f));
+            modelMatrix_maze = rotationMat * modelMatrix_maze;
+
             bool hasCollision = mazeModel.checkSphereCollision(sphereModel.getCenterPosition(),
                                                                sphereModel.getRadius(),
-                                                               glm::mat4(1.0f),
+                                                               modelMatrix_maze,
                                                                collisions,
                                                                impulses);
+            glm::vec3 temp = sphereModel.getCenterPosition();
             if (hasCollision) {
+//                std::cout<<"**************************************"<<std::endl;
+//                std::cout<<"collision detected"<<std::endl;
+//                std::cout<<"**************************************"<<std::endl;
                 std::cout<<"**************************************"<<std::endl;
-                std::cout<<"collision detected"<<std::endl;
+                std::cout << "(" << temp.x << ", " << temp.y << ", " << temp.z << ")" << std::endl;
+                for (int row = 0; row < 4; ++row) {
+                    for (int col = 0; col < 4; ++col) {
+                        std::cout << modelMatrix_maze[col][row] << " ";
+                    }
+                    std::cout << std::endl;
+                }
                 std::cout<<"**************************************"<<std::endl;
-                std::vector<Model> touchedObjs;
+                float deepestPenDep = -1;
+                int deepestIdx = -1;
+                for (int i = 0; i < collisions.size(); i++) {
+                    if (collisions[i].penetrationDepth > deepestPenDep) {
+                        deepestIdx = i;
+                        deepestPenDep = collisions[i].penetrationDepth;
+                    }
+                }
+                std::vector<Model*> touchedObjs;
                 std::vector<glm::vec3> normals;
-//                for (auto collision : collisions) {
-//                    touchedObjs.push_back(*(collision.collidedObject));
-//                    normals.push_back(
-//                            glm::vec3 (
-//                                    rotationMat *
-//                                    glm::vec4(collision.normal, 0.0f)
-//                                    )
-//                            );
-//                }
-//                sphereModel.collisionUpdate(touchedObjs, normals);
+                touchedObjs.push_back(collisions[deepestIdx].collidedObject);
+                normals.push_back(collisions[deepestIdx].normal);
+                sphereModel.collisionUpdate(touchedObjs, normals);
+            } else {
+                std::cout<<"---------------------------------------"<<std::endl;
+                std::cout << "(" << temp.x << ", " << temp.y << ", " << temp.z << ")" << std::endl;
+                for (int row = 0; row < 4; ++row) {
+                    for (int col = 0; col < 4; ++col) {
+                        std::cout << modelMatrix_maze[col][row] << " ";
+                    }
+                    std::cout << std::endl;
+                }
+                std::cout<<"---------------------------------------"<<std::endl;
             }
 
-            spherePos = glm::vec3 (
-                    rotationMat *
-                    glm::vec4(sphereModel.getTranslation(), 0.0f)
-            );
+            spherePos = sphereModel.getTranslation();
             UniformBufferObject uboFrame{};
 
             int width, height;
@@ -164,14 +190,12 @@ int main() {
 
             context.updateUniformBuffer(uboFrame);
 
-            glm::mat4 modelMatrix_maze = glm::mat4(1.0f);
-            modelMatrix_maze = glm::scale(modelMatrix_maze, glm::vec3(2.0f, 2.0f, 2.0f));
-            modelMatrix_maze = rotationMat * modelMatrix_maze;
+
             context.pushModelMatrix(commandBuffer, modelMatrix_maze);
             
             mazeModel.draw(commandBuffer);
 
-            modelMatrix_sphere = rotationMat * modelMatrix_sphere;
+            modelMatrix_sphere = modelMatrix_sphere;
             context.pushModelMatrix(commandBuffer, modelMatrix_sphere);
             sphereModel.draw(commandBuffer);
 

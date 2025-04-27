@@ -13,7 +13,7 @@ float calculateImpulse(
         float massA, float massB,
         const glm::vec3& velocityA, const glm::vec3& velocityB,
         const glm::vec3& normal, // normal pointing from A to B
-        float restitution = 1.0f // coefficient of restitution, 1 = elastic, 0 = inelastic
+        float restitution = 0.8f // coefficient of restitution, 1 = elastic, 0 = inelastic
 );
 
 struct Contact {

@@ -59,6 +59,7 @@ glm::mat4 RollingBall::updatePhysicalStates(float deltaTime) {
 
     translation += velocity * deltaTime;
     velocity += acceleration * deltaTime;
+//    velocity = std::min(20.0f, glm::length(velocity)) * glm::normalize(velocity);
     // center is the position of ball center when the world is initialized
     // centerPosition is the current position of the ball center
     glm::mat4 modelMatrix =
@@ -69,7 +70,7 @@ glm::mat4 RollingBall::updatePhysicalStates(float deltaTime) {
 
     acceleration = glm::vec3 (0.0f, -9.81f, 0.0f); //gravity
     // only consider air friction (friction actually moves ball!!!)
-    acceleration += -velocity * ((float) 0.5) / mass;
+    acceleration += -velocity * 1.0f / mass;
     return modelMatrix;
 }
 
@@ -89,25 +90,24 @@ void RollingBall::updateAcceleration(const std::vector<glm::vec3>& supForces) {
     }
 }
 
-void RollingBall::updateVelocity(const std::vector<Model>& touchedObjs,
+void RollingBall::updateVelocity(const std::vector<Model*>& touchedObjs,
                                  const std::vector<glm::vec3>& normals) {
     // normals have to be unit vectors
     // normals must point to the ball
     for (int i = 0; i < touchedObjs.size(); i++) {
-        float impulse = calculateImpulse(touchedObjs[i].mass, mass,
-                                         touchedObjs[i].velocity, velocity,
+        float impulse = calculateImpulse(touchedObjs[i]->mass, mass,
+                                         touchedObjs[i]->velocity, velocity,
                                          normals[i]);
 
-        velocity += impulse / mass;
+        velocity += impulse * normals[i] / mass;
     }
 }
 
-void RollingBall::updateRotV(const std::vector<Model>& touchedObjs,
-                             const std::vector<glm::vec3>& normals,
+void RollingBall::updateRotV(const std::vector<glm::vec3>& normals,
                              const std::vector<glm::vec3>& supForces) {
     rotateVelocities.clear();
     rotateAxes.clear();
-    for (int i = 0; i < touchedObjs.size(); i++) {
+    for (int i = 0; i < normals.size(); i++) {
         if (glm::length(supForces[i]) > 1e-5) {
             // velocity perpendicular to support force
             glm::vec3 part_v = velocity - glm::dot(velocity, normals[i]) * normals[i];
@@ -118,35 +118,43 @@ void RollingBall::updateRotV(const std::vector<Model>& touchedObjs,
     }
 }
 
-void RollingBall::collisionUpdate(const std::vector<Model>& touchedObjs,
+void RollingBall::collisionUpdate(const std::vector<Model*>& touchedObjs,
                                   const std::vector<glm::vec3>& normals) {
 
-    std::vector<Model> staObjs;
-    std::vector<Model> dynObjs;
+    std::vector<Model*> staObjs;
+    std::vector<Model*> dynObjs;
     std::vector<glm::vec3> staNormals;
     std::vector<glm::vec3> dynNormals;
     for (int i = 0; i < touchedObjs.size(); i++) {
-        if (std::abs(glm::dot(normals[i], velocity - touchedObjs[i].velocity)) > 1e-5) {
+        if (std::abs(glm::dot(normals[i], velocity - touchedObjs[i]->velocity)) > 1e-1) {
             dynObjs.push_back(touchedObjs[i]);
             dynNormals.push_back(normals[i]);
         } else {
             staObjs.push_back(touchedObjs[i]);
             staNormals.push_back(normals[i]);
+//            velocity = velocity - glm::dot(velocity, normals[i]) * normals[i];
         }
     }
     std::vector<glm::vec3> supForces;
     // do resting contact first or the velocity will be changed
     if (!staObjs.empty()) {
+//        std::cout << "-----------------------------" << std::endl;
+//        std::cout << "resting contact!!!" << std::endl;
+//        std::cout << "-----------------------------" << std::endl;
         supForces = solveSupportForcesLCP(mass, acceleration, staNormals);
         updateAcceleration(supForces);
     }
 
     if (!dynObjs.empty()) {
+//        std::cout << "-----------------------------" << std::endl;
+//        std::cout << "(" << velocity.x << ", " << velocity.y << ", " << velocity.z << ")" << std::endl;
         updateVelocity(dynObjs, dynNormals);
+//        std::cout << "(" << velocity.x << ", " << velocity.y << ", " << velocity.z << ")" << std::endl;
+//        std::cout << "-----------------------------" << std::endl;
     }
 
     if (!supForces.empty()) {
-        updateRotV(staObjs, staNormals, supForces);
+        updateRotV(staNormals, supForces);
     }
 
 }
