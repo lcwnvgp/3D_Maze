@@ -966,46 +966,26 @@ glm::vec3 HelloVulkan::closestPointTriangle(const glm::vec3& P, const glm::vec3&
   if(d3 >= 0 && d4 <= d3) return B;
   glm::vec3 CP = P - C; float d5 = glm::dot(AB, CP), d6 = glm::dot(AC, CP);
   if(d6 >= 0 && d5 <= d6) return C;
-  // 投影到边 AB
+  // AB
   float vc = d1*d4 - d3*d2;
   if(vc <= 0 && d1 >= 0 && d3 <= 0) {
     float v = d1 / (d1 - d3);
     return A + v * AB;
   }
-  // 投影到边 AC
+  // AC
   float vb = d5*d2 - d1*d6;
   if(vb <= 0 && d2 >= 0 && d6 <= 0) {
     float w = d2 / (d2 - d6);
     return A + w * AC;
   }
-  // 投影到边 BC
+  // BC
   float va = d3*d6 - d5*d4;
   if(va <= 0 && (d4 - d3) >= 0 && (d5 - d6) >= 0) {
     float w = (d4 - d3) / ((d4 - d3) + (d5 - d6));
     return B + w * (C - B);
   }
-  // 面内部
+  // inside
   glm::vec3 N = glm::cross(AB, AC);
   float dist = glm::dot(AP, N) / glm::length(N);
   return P - dist * glm::normalize(N);
-}
-
-void HelloVulkan::initMazeTris()
-{
-  auto& model = m_objModel[0];  // 迷宫
-  // 假设 Vertex 类型里有 glm::vec3 pos;
-  void*  v     = m_alloc.map(model.vertexBuffer);
-  Vertex*   vtxPtr = reinterpret_cast<Vertex*>(v);
-  void*  i     = m_alloc.map(model.indexBuffer);
-  uint32_t* idxPtr = reinterpret_cast<uint32_t*>(i);
-  for(uint32_t i = 0; i < model.nbIndices; i += 3)
-  {
-    mazeTris.push_back({
-      vtxPtr[idxPtr[i+0]].pos,
-      vtxPtr[idxPtr[i+1]].pos,
-      vtxPtr[idxPtr[i+2]].pos
-    });
-  }
-  m_alloc.unmap(model.vertexBuffer);
-  m_alloc.unmap(model.indexBuffer);
 }

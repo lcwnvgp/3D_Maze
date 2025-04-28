@@ -98,7 +98,7 @@ int main(int argc, char** argv)
 
   // Setup camera
   CameraManip.setWindowSize(SAMPLE_WIDTH, SAMPLE_HEIGHT);
-  CameraManip.setLookat(glm::vec3(5, 4, -4), glm::vec3(0, 1, 0), glm::vec3(0, 1, 0));
+  CameraManip.setLookat(glm::vec3(-60, 48, 0), glm::vec3(0, 1, 0), glm::vec3(0, 1, 0));
 
   // Setup Vulkan
   if(!glfwVulkanSupported())
@@ -167,15 +167,12 @@ int main(int argc, char** argv)
   helloVk.loadModel(nvh::findFile("media/scenes/maze.obj", defaultSearchPaths, true));
   helloVk.loadModel(nvh::findFile("media/scenes/mysphere.obj", defaultSearchPaths, true));
   // helloVk.initMazeTris();
-
-  // 初始 transform
+  
   helloVk.m_instances.resize(2);
-  // 迷宫放在原点
   helloVk.m_instances[0].transform = glm::mat4(1.0f);
-  // 小球放到迷宫入口上方
-  glm::vec3 ballStart = {0.0f, 0.0f, 0.0f};
+  glm::vec3 ballStart = {-25.2f, 20.f, -4.72f};
   helloVk.m_instances[1].transform = glm::translate(glm::mat4(1.0f), ballStart)
-                                 * glm::scale(glm::mat4(1.0f), glm::vec3(1.0f));  // 假设半径0.1
+                                 * glm::scale(glm::mat4(1.0f), glm::vec3(1.0f)); 
 
   helloVk.createOffscreenRender();
   helloVk.createDescriptorSetLayout();
@@ -204,14 +201,12 @@ int main(int argc, char** argv)
   helloVk.setupGlfwCallbacks(window);
   ImGui_ImplGlfw_InitForVulkan(window, true);
 
-
-  // -- 物理状态 --
   glm::vec3 ballPos = ballStart;
-  glm::vec3 ballVel = {0,0,0};
-  float     ballRadius   = 1.0f;
-  const glm::vec3 GRAV = {0,-9.81f,0};
-  const float μ = 0.2f;        // 摩擦系数
-  const float e = 0.5f;        // 碰撞反弹系数
+  glm::vec3 ballVel = {0.0f,0.0f,0.0f};
+  float     ballRadius   = 1.744f;
+  const glm::vec3 GRAV = {0.0f,-9.81f,0.0f};
+  const float μ = 0.2f;        
+  const float e = 0.3f;        
 
   float g_tiltX = 0.0f, g_tiltZ = 0.0f;
   const float g_speed = glm::radians(30.0f); 
@@ -228,7 +223,6 @@ int main(int argc, char** argv)
     float  dt  = float(now - lastTime);
     lastTime   = now;
 
-    // 5.2) 轮询按键，持续累加倾斜角度
     if(glfwGetKey(window, GLFW_KEY_W)==GLFW_PRESS) g_tiltX += g_speed*dt;
     if(glfwGetKey(window, GLFW_KEY_S)==GLFW_PRESS) g_tiltX -= g_speed*dt;
     if(glfwGetKey(window, GLFW_KEY_D)==GLFW_PRESS) g_tiltZ += g_speed*dt;
@@ -243,65 +237,63 @@ int main(int argc, char** argv)
 
     glm::mat4 R = T2 * RtiltZ * RtiltX * T1;
     helloVk.m_instances[0].transform = R;
+    glm::vec3 platformUp = glm::vec3(R * glm::vec4(0, 1, 0, 0));
+    glm::vec3 effectiveGravity = GRAV - platformUp * glm::dot(GRAV, platformUp);
+    int   subSteps = 30;
+    float subDt    = dt / float(subSteps);
+    for(int step = 0; step < subSteps; ++step) {
+      ballVel += GRAV * subDt;
+      
+      glm::vec3 next = ballPos + ballVel * subDt;
 
-    // —— 球的物理——
-    // 1) 计算地面法线
-    glm::vec3 n = glm::normalize(glm::vec3(R * glm::vec4(0,1,0,0)));
-    // 2) 重力分力 + 摩擦
-    glm::vec3 a = GRAV - glm::dot(GRAV,n)*n - μ*ballVel;
-    // 3) 更新速度/位置
-    ballVel += a*dt;
-    glm::vec3 next = ballPos + ballVel*dt;
-    // 4) 简单碰撞：对 maze 中每三角形检测穿透（略——用库或自己写）
-    //    这里只做示意：如果 y < 球半径，就弹回:
-    int subSteps = 5;                              // 细分几步可以根据速度再调高
-float dt   = dt / float(subSteps);
-    for(int step = 0; step < subSteps; ++step)
-{
-  // …（前面不变：更新 R，计算 a、更新 ballVel，预测 candidate）…
+      bool collided = false;
+      glm::vec3 contactN(0.0f);
+      float penetration = 0.0f;
+      for(auto& tri : helloVk.mazeTris) {
+        glm::vec3 A = glm::vec3(R * glm::vec4(tri.a, 1.0f));
+        glm::vec3 B = glm::vec3(R * glm::vec4(tri.b, 1.0f));
+        glm::vec3 C = glm::vec3(R * glm::vec4(tri.c, 1.0f));
+        glm::vec3 p = helloVk.closestPointTriangle(next, A, B, C);
+        glm::vec3 diff = next - p;
+        float dist2 = glm::dot(diff, diff);
+        if(dist2 < ballRadius * ballRadius) {
+          float dist = std::sqrt(dist2);
+          contactN    = (dist > 1e-6f ? diff / dist : glm::vec3(0,1,0));
+          penetration = ballRadius - dist;
+          collided    = true;
+          break;
+        }
+      }
 
-  bool collidedThisSubstep = false;
+      if(collided) {
+        // penetration
+        next += contactN * penetration;
 
-  for(size_t ti = 0; ti < helloVk.mazeTris.size(); ++ti)
-  {
-    const auto& tri = helloVk.mazeTris[ti];
-    glm::vec3 p = helloVk.closestPointTriangle(next, tri.a, tri.b, tri.c);
-    glm::vec3 v = next - p;
-    float d2 = glm::dot(v,v);
-    if(d2 < ballRadius * ballRadius)
-    {
-      // 打印一下
-      std::cout << "[Substep " << step
-                << "] collision! triangle #" << ti
-                << "  d²=" << d2
-                << "  ballPos=" << glm::to_string(ballPos)
-                << "  next=" << glm::to_string(next)
-                << std::endl;
+        // normal
+        glm::vec3 n = contactN;
+        // gravity
+        glm::vec3 gN = glm::dot(GRAV, n) * n;
+        glm::vec3 gT = GRAV - gN;
+        // tangential
+        glm::vec3 vT = ballVel - glm::dot(ballVel, n) * n;
+        // tangential acceleration
+        glm::vec3 aT = gT - μ * vT;
+        // tangential velocity
+        vT += aT * subDt;
+        // normal velocity
+        glm::vec3 vN = glm::dot(ballVel, n) * n;
+        // normal velocity new
+        glm::vec3 vN_new = -e * vN;
+        // tangential velocity new
+        glm::vec3 vT_new = vT;
+        ballVel = vN_new + vT_new;
+      }
 
-      float d = std::sqrt(d2);
-      glm::vec3 contactN = (d > 1e-6f ? v/d : glm::vec3(0,1,0));
-      next += contactN * (ballRadius - d);
-      ballVel   -= (1.0f + e) * glm::dot(ballVel, contactN) * contactN;
-
-      collidedThisSubstep = true;
+      ballPos = next;
     }
-  }
 
-  if(!collidedThisSubstep)
-  {
-    std::cout << "[Substep " << step << "] no collision, move to " 
-              << glm::to_string(next) << std::endl;
-  }
+    helloVk.m_instances[1].transform = glm::translate(glm::mat4(1.0f), ballPos) * glm::scale(glm::mat4(1.0f), glm::vec3(1.0f));
 
-  ballPos = next;
-}
-
-    // 更新小球实例 transform
-    helloVk.m_instances[1].transform =
-      glm::translate(glm::mat4(1.0f), ballPos)
-      * glm::scale(glm::mat4(1.0f), glm::vec3(ballRadius));
-
-    
     helloVk.createObjDescriptionBuffer();
     helloVk.updateDescriptorSet();
 

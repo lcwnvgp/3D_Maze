@@ -77,7 +77,7 @@ public:
 
   // Information pushed at each draw call
   PushConstantRaster m_pcRaster{
-      {2, 0, 0, 0, 0, 2, 0, 0, 0, 0, 2, 0, 0, 0, 0, 1},  // Identity matrix
+      {5, 0, 0, 0, 0, 5, 0, 0, 0, 0, 5, 0, 0, 0, 0, 1},  // Identity matrix
       {0.f, 20.f, 0.f},                                 // light position
       0,                                                 // instance Id
       100.f,                                             // light intensity
@@ -108,7 +108,6 @@ public:
   nvvk::DebugUtil            m_debug;  // Utility to name objects
 
   glm::vec3 closestPointTriangle(const glm::vec3& P, const glm::vec3& A, const glm::vec3& B, const glm::vec3& C);
-  void initMazeTris();
 
   // #Post - Draw the rendered image on a quad using a tonemapper
   void createOffscreenRender();
