@@ -164,15 +164,30 @@ int main(int argc, char** argv)
   helloVk.initGUI(0);  // Using sub-pass 0
 
   // Creation of the example
-  helloVk.loadModel(nvh::findFile("media/scenes/maze.obj", defaultSearchPaths, true));
+  helloVk.loadModel(nvh::findFile("media/scenes/newmaze.obj", defaultSearchPaths, true));
   helloVk.loadModel(nvh::findFile("media/scenes/mysphere.obj", defaultSearchPaths, true));
-  // helloVk.initMazeTris();
+  helloVk.loadModel(nvh::findFile("media/scenes/shield.obj", defaultSearchPaths, true));
+  helloVk.loadModel(nvh::findFile("media/scenes/spring.obj", defaultSearchPaths, true));
+  helloVk.loadModel(nvh::findFile("media/scenes/fan.obj", defaultSearchPaths, true));
   
-  helloVk.m_instances.resize(2);
   helloVk.m_instances[0].transform = glm::mat4(1.0f);
+
   glm::vec3 ballStart = {-25.2f, 20.f, -4.72f};
   helloVk.m_instances[1].transform = glm::translate(glm::mat4(1.0f), ballStart)
                                  * glm::scale(glm::mat4(1.0f), glm::vec3(1.0f)); 
+  
+  glm::vec3 shieldStart = {-0.786f, 2.745f, -4.381f};
+  glm::mat4 baseShieldLocal = helloVk.m_instances[2].transform;
+
+  glm::vec3 springStart = {-26.022f, 4.599f, 16.931f};
+  helloVk.m_instances[3].transform = 
+    glm::translate(glm::mat4(1.0f), springStart) *
+    glm::scale(glm::mat4(1.0f), glm::vec3(0.7f)) *
+    glm::translate(glm::mat4(1.0f), -springStart) *
+    helloVk.m_instances[3].transform;   
+  glm::mat4 baseSpringLocal = helloVk.m_instances[3].transform;
+
+  glm::vec3 fanStart = {9.991f, 4.434f, -13.264f};
 
   helloVk.createOffscreenRender();
   helloVk.createDescriptorSetLayout();
@@ -201,6 +216,11 @@ int main(int argc, char** argv)
   helloVk.setupGlfwCallbacks(window);
   ImGui_ImplGlfw_InitForVulkan(window, true);
 
+  bool        followBall;  
+  bool        spaceWasPressed; 
+  const float followDist = 4.0f; 
+  const float heightOff  = 2.0f; 
+
   glm::vec3 ballPos = ballStart;
   glm::vec3 ballVel = {0.0f,0.0f,0.0f};
   float     ballRadius   = 1.744f;
@@ -211,6 +231,8 @@ int main(int argc, char** argv)
   float g_tiltX = 0.0f, g_tiltZ = 0.0f;
   const float g_speed = glm::radians(30.0f); 
   double lastTime = glfwGetTime();
+  float fanAngle     = 0.0f;
+  const float fanSpeed = glm::radians(180.0f);
 
   // Main loop
   while(!glfwWindowShouldClose(window))
@@ -223,6 +245,14 @@ int main(int argc, char** argv)
     float  dt  = float(now - lastTime);
     lastTime   = now;
 
+    // fan rotation
+    fanAngle += fanSpeed * dt * 2.0f;
+    glm::mat4 Fan_T1 = glm::translate(glm::mat4(1.0f),  fanStart);
+    glm::mat4 Fan_R  = glm::rotate   (glm::mat4(1.0f), fanAngle, glm::vec3(0, 0, 1));
+    glm::mat4 Fan_T0 = glm::translate(glm::mat4(1.0f), -fanStart);
+    helloVk.m_instances[4].transform = Fan_T1 * Fan_R * Fan_T0;
+
+    // maze tilt
     if(glfwGetKey(window, GLFW_KEY_W)==GLFW_PRESS) g_tiltX += g_speed*dt;
     if(glfwGetKey(window, GLFW_KEY_S)==GLFW_PRESS) g_tiltX -= g_speed*dt;
     if(glfwGetKey(window, GLFW_KEY_D)==GLFW_PRESS) g_tiltZ += g_speed*dt;
@@ -236,10 +266,20 @@ int main(int argc, char** argv)
     glm::mat4 T2       = glm::translate(glm::mat4(1.0f), mazePos);
 
     glm::mat4 R = T2 * RtiltZ * RtiltX * T1;
+    
+    glm::mat4 shieldGlobal = R * baseShieldLocal;
+    glm::mat4 springGlobal = R * baseSpringLocal;
+    glm::mat4 fanGlobal = R * helloVk.m_instances[4].transform;
+    
     helloVk.m_instances[0].transform = R;
+    helloVk.m_instances[2].transform = shieldGlobal;
+    helloVk.m_instances[3].transform = springGlobal;
+    helloVk.m_instances[4].transform = fanGlobal;
+
+    
     glm::vec3 platformUp = glm::vec3(R * glm::vec4(0, 1, 0, 0));
     glm::vec3 effectiveGravity = GRAV - platformUp * glm::dot(GRAV, platformUp);
-    int   subSteps = 30;
+    int   subSteps = 100;
     float subDt    = dt / float(subSteps);
     for(int step = 0; step < subSteps; ++step) {
       ballVel += GRAV * subDt;
@@ -293,6 +333,33 @@ int main(int argc, char** argv)
     }
 
     helloVk.m_instances[1].transform = glm::translate(glm::mat4(1.0f), ballPos) * glm::scale(glm::mat4(1.0f), glm::vec3(1.0f));
+
+    bool spacePressed = (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS);
+    if (spacePressed && !spaceWasPressed) {
+      followBall = !followBall;
+    }
+    spaceWasPressed = spacePressed;
+    
+    if (followBall) {
+      glm::vec3 dir = glm::vec3(ballVel.x, 0.0f, ballVel.z);
+      if (glm::length(dir) < 1e-3f) {
+        dir = glm::vec3(0.0f, 0.0f, -1.0f);
+      } else {
+        dir = glm::normalize(dir);
+      }
+
+      // glm::vec3 eye = ballPos - dir * followDist
+      //               + glm::vec3(0.0f, heightOff, 0.0f);
+
+      // glm::vec3 center = ballPos;
+
+      glm::vec3 eye = ballPos + glm::vec3(-20.0f, 15.0f, 0.0f);
+      glm::vec3 center = ballPos + glm::vec3(0.0f, 5.0f, 0.0f);
+      CameraManip.setLookat(eye, center, glm::vec3(0.0f,1.0f,0.0f));
+    }
+    // else{
+    //   CameraManip.setLookat(glm::vec3(-60, 48, 0), glm::vec3(0, 1, 0), glm::vec3(0, 1, 0));
+    // }
 
     helloVk.createObjDescriptionBuffer();
     helloVk.updateDescriptorSet();
