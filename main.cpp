@@ -173,18 +173,16 @@ int main(int argc, char** argv)
   helloVk.m_instances[0].transform = glm::mat4(1.0f);
 
   glm::vec3 ballStart = {-25.2f, 20.f, -4.72f};
+  // glm::vec3 ballStart = {-23.022f, 4.599f, 16.931f};
   helloVk.m_instances[1].transform = glm::translate(glm::mat4(1.0f), ballStart)
                                  * glm::scale(glm::mat4(1.0f), glm::vec3(1.0f)); 
   
   glm::vec3 shieldStart = {-0.786f, 2.745f, -4.381f};
   glm::mat4 baseShieldLocal = helloVk.m_instances[2].transform;
 
-  glm::vec3 springStart = {-26.022f, 4.599f, 16.931f};
-  helloVk.m_instances[3].transform = 
-    glm::translate(glm::mat4(1.0f), springStart) *
-    glm::scale(glm::mat4(1.0f), glm::vec3(0.7f)) *
-    glm::translate(glm::mat4(1.0f), -springStart) *
-    helloVk.m_instances[3].transform;   
+  glm::vec3 springStart = {-26.6f, 3.202f, 17.315f};
+  // helloVk.m_instances[3].transform = glm::translate(glm::mat4(1.0f), springStart)
+  //                                * glm::scale(glm::mat4(1.0f), glm::vec3(1.0f));
   glm::mat4 baseSpringLocal = helloVk.m_instances[3].transform;
 
   glm::vec3 fanStart = {9.991f, 4.434f, -13.264f};
@@ -225,14 +223,31 @@ int main(int argc, char** argv)
   glm::vec3 ballVel = {0.0f,0.0f,0.0f};
   float     ballRadius   = 1.744f;
   const glm::vec3 GRAV = {0.0f,-9.81f,0.0f};
-  const float μ = 0.2f;        
-  const float e = 0.3f;        
+  const float μ = 0.05f;        
+  const float e = 0.15f;        
 
   float g_tiltX = 0.0f, g_tiltZ = 0.0f;
-  const float g_speed = glm::radians(30.0f); 
+  const float g_speed = glm::radians(5.0f); 
   double lastTime = glfwGetTime();
+
+  bool   shieldCollected     = false;
+  float  shieldPickupRadius  = 4.0f;
+
+  bool   springArmed       = false;     
+  bool   springCompressing = false;     
+  float  springCompress    = 0.0f;      
+  const float maxCompress  = 5.0f;      
+  const float compressRate = 1.0f;      
+  const float bounceStrength = 20.0f;
+  float springPickupRadius = 10.0f;
+  glm::vec3 springLocalPos = glm::vec3(baseSpringLocal[3]);
+
   float fanAngle     = 0.0f;
   const float fanSpeed = glm::radians(180.0f);
+  glm::vec3 fanForceOffset = glm::vec3(0.0f, -4.0f, 2.0f); 
+  glm::vec3 fanForceCenter = fanStart + fanForceOffset; 
+  float fanRadius   = 3.0f;
+  float fanStrength = 70.0f;
 
   // Main loop
   while(!glfwWindowShouldClose(window))
@@ -272,20 +287,81 @@ int main(int argc, char** argv)
     glm::mat4 fanGlobal = R * helloVk.m_instances[4].transform;
     
     helloVk.m_instances[0].transform = R;
-    helloVk.m_instances[2].transform = shieldGlobal;
-    helloVk.m_instances[3].transform = springGlobal;
+    // shield
+    glm::vec3 shieldWorld0 = glm::vec3(R * glm::vec4(shieldStart, 1.0f));
+    if (!shieldCollected && glm::length(ballPos - shieldWorld0) < shieldPickupRadius) {
+      shieldCollected = true;
+    }
+    if (!shieldCollected) {
+      helloVk.m_instances[2].transform = shieldGlobal;
+    } else {
+      fanStrength = 20.0f;
+      // glm::vec3 mazeNegZ = -glm::normalize(glm::vec3(R * glm::vec4(0,0,1,0)));
+      glm::vec3 shieldPos = ballPos + glm::vec3(0.8f,-2.5f,2.5f);
+      helloVk.m_instances[2].transform = glm::translate(glm::mat4(1.0f), shieldPos);
+    }
+    // spring
+    glm::vec3 springWorld0 = springStart;
+    if (glm::distance(ballPos, springWorld0) < springPickupRadius) {
+      springArmed = true;
+    }
+    static bool wasQPressed = false;
+    bool qDown = (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS);
+
+    if (springArmed) {
+      if (qDown) {
+        springCompressing = true;
+        springCompress += compressRate * dt;
+        springCompress = glm::min(springCompress, maxCompress);
+      }
+      else if (!qDown && wasQPressed && springCompressing) {
+        ballVel += glm::vec3(1.0f, 0.0f, 0.0f) * bounceStrength * springCompress;
+
+        springCompressing = false;
+        springCompress    = 0.0f;
+        springArmed       = false;
+      }
+    }
+
+    wasQPressed = qDown;
+
+    if (springCompressing) {
+      float d = glm::clamp(springCompress, 0.0f, 1.0f);
+
+      glm::mat4 localOffset = glm::translate(glm::mat4(1.0f), glm::vec3(-d, 0, 0));
+
+      helloVk.m_instances[3].transform = springGlobal * localOffset;
+    } 
+    else {
+      helloVk.m_instances[3].transform = springGlobal;
+    }
+
+    // fan
     helloVk.m_instances[4].transform = fanGlobal;
 
+    glm::vec3 forceCenterWorld = glm::vec3(R * glm::vec4(fanForceCenter, 1.0f));
+    glm::vec3 fanDir = glm::normalize(glm::vec3(R * glm::vec4(0,0,1,0)));
     
     glm::vec3 platformUp = glm::vec3(R * glm::vec4(0, 1, 0, 0));
     glm::vec3 effectiveGravity = GRAV - platformUp * glm::dot(GRAV, platformUp);
-    int   subSteps = 100;
+    int   subSteps = 200;
     float subDt    = dt / float(subSteps);
+
     for(int step = 0; step < subSteps; ++step) {
       ballVel += GRAV * subDt;
       
+      if(!shieldCollected)
+      {
+        glm::vec3 diff = ballPos - forceCenterWorld;
+        diff.y = 0;
+        if(glm::length(diff) < fanRadius) {
+          ballVel += fanDir * (fanStrength * subDt);
+        }
+      }
+
       glm::vec3 next = ballPos + ballVel * subDt;
 
+      // maze collision
       bool collided = false;
       glm::vec3 contactN(0.0f);
       float penetration = 0.0f;
@@ -329,34 +405,100 @@ int main(int argc, char** argv)
         ballVel = vN_new + vT_new;
       }
 
-      ballPos = next;
-    }
-
-    helloVk.m_instances[1].transform = glm::translate(glm::mat4(1.0f), ballPos) * glm::scale(glm::mat4(1.0f), glm::vec3(1.0f));
-
-    bool spacePressed = (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS);
-    if (spacePressed && !spaceWasPressed) {
-      followBall = !followBall;
-    }
-    spaceWasPressed = spacePressed;
-    
-    if (followBall) {
-      glm::vec3 dir = glm::vec3(ballVel.x, 0.0f, ballVel.z);
-      if (glm::length(dir) < 1e-3f) {
-        dir = glm::vec3(0.0f, 0.0f, -1.0f);
-      } else {
-        dir = glm::normalize(dir);
+      std::cout<<"next:"<<glm::to_string(next)<<std::endl;  
+      // spring collision
+      std::cout<<"springStart:"<<glm::to_string(springStart)<<std::endl;
+      std::cout<<"length spring:"<<glm::length(next - springStart)<<std::endl;  
+      if(glm::length(next - springStart) < 10.0f) {
+      for(auto &tri : helloVk.springTris){
+        glm::vec3 A=glm::vec3(R*glm::vec4(tri.a,1));
+        glm::vec3 B=glm::vec3(R*glm::vec4(tri.b,1));
+        glm::vec3 C=glm::vec3(R*glm::vec4(tri.c,1));
+        glm::vec3 p=helloVk.closestPointTriangle(next,A,B,C);
+        glm::vec3 diff=next-p; float d2=glm::dot(diff,diff);
+        if(d2<ballRadius*ballRadius){
+          float d=std::sqrt(d2);
+          glm::vec3 n=(d>1e-6f?diff/d:glm::vec3(0,1,0));
+          next += n*(ballRadius - d);
+          glm::vec3 vN=glm::dot(ballVel,n)*n;
+          glm::vec3 vT=ballVel-vN;
+          ballVel = -e*vN + (1.0f-μ)*vT;
+          break;
+        }
+      }
+      }
+      
+      // shield collision
+      std::cout<<"shieldStart:"<<glm::to_string(shieldStart)<<std::endl;
+      std::cout<<"length shield:"<<glm::length(next - shieldStart)<<std::endl;  
+      if(glm::length(next - shieldStart) < 3.0f) {
+      for(auto &tri : helloVk.shieldTris){
+        glm::vec3 A=glm::vec3(R*glm::vec4(tri.a,1));
+        glm::vec3 B=glm::vec3(R*glm::vec4(tri.b,1));
+        glm::vec3 C=glm::vec3(R*glm::vec4(tri.c,1));
+        glm::vec3 p=helloVk.closestPointTriangle(next,A,B,C);
+        glm::vec3 diff=next-p; float d2=glm::dot(diff,diff);
+        if(d2<ballRadius*ballRadius){
+          float d=std::sqrt(d2);
+          glm::vec3 n=(d>1e-6f?diff/d:glm::vec3(0,1,0));
+          next += n*(ballRadius - d);
+          glm::vec3 vN=glm::dot(ballVel,n)*n;
+          glm::vec3 vT=ballVel-vN;
+          ballVel = -e*vN + (1.0f-μ)*vT;
+          break;    
+        }
+      }
+      }
+      
+      // fan collision
+      std::cout<<"fanStart:"<<glm::to_string(fanStart)<<std::endl;
+      std::cout<<"length fan:"<<glm::length(next - fanStart)<<std::endl;  
+      if(glm::length(next - fanStart) < 3.0f) {
+      for(auto &tri : helloVk.fanTris){
+        glm::vec3 A=glm::vec3(R*glm::vec4(tri.a,1));
+        glm::vec3 B=glm::vec3(R*glm::vec4(tri.b,1));
+        glm::vec3 C=glm::vec3(R*glm::vec4(tri.c,1));
+        glm::vec3 p=helloVk.closestPointTriangle(next,A,B,C);
+        glm::vec3 diff=next-p; float d2=glm::dot(diff,diff);
+        if(d2<ballRadius*ballRadius){
+          float d=std::sqrt(d2);
+          glm::vec3 n=(d>1e-6f?diff/d:glm::vec3(0,1,0));
+          next += n*(ballRadius - d);
+          glm::vec3 vN=glm::dot(ballVel,n)*n;
+          glm::vec3 vT=ballVel-vN;
+          ballVel = -e*vN + (1.0f-μ)*vT;
+          break;
+        }
+      }
       }
 
-      // glm::vec3 eye = ballPos - dir * followDist
-      //               + glm::vec3(0.0f, heightOff, 0.0f);
-
-      // glm::vec3 center = ballPos;
-
-      glm::vec3 eye = ballPos + glm::vec3(-20.0f, 15.0f, 0.0f);
-      glm::vec3 center = ballPos + glm::vec3(0.0f, 5.0f, 0.0f);
-      CameraManip.setLookat(eye, center, glm::vec3(0.0f,1.0f,0.0f));
+      ballPos = next;
     }
+    helloVk.m_instances[1].transform = glm::translate(glm::mat4(1.0f), ballPos) * glm::scale(glm::mat4(1.0f), glm::vec3(1.0f));
+
+    // bool spacePressed = (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS);
+    // if (spacePressed && !spaceWasPressed) {
+    //   followBall = !followBall;
+    // }
+    // spaceWasPressed = spacePressed;
+    
+    // if (followBall) {
+    //   glm::vec3 dir = glm::vec3(ballVel.x, 0.0f, ballVel.z);
+    //   if (glm::length(dir) < 1e-3f) {
+    //     dir = glm::vec3(0.0f, 0.0f, -1.0f);
+    //   } else {
+    //     dir = glm::normalize(dir);
+    //   }
+
+    //   // glm::vec3 eye = ballPos - dir * followDist
+    //   //               + glm::vec3(0.0f, heightOff, 0.0f);
+
+    //   // glm::vec3 center = ballPos;
+
+    //   glm::vec3 eye = ballPos + glm::vec3(-20.0f, 15.0f, 0.0f);
+    //   glm::vec3 center = ballPos + glm::vec3(0.0f, 5.0f, 0.0f);
+    //   CameraManip.setLookat(eye, center, glm::vec3(0.0f,1.0f,0.0f));
+    // }
     // else{
     //   CameraManip.setLookat(glm::vec3(-60, 48, 0), glm::vec3(0, 1, 0), glm::vec3(0, 1, 0));
     // }

@@ -215,6 +215,40 @@ void HelloVulkan::loadModel(const std::string& filename, glm::mat4 transform)
     }
   }
 
+  if (filename.find("spring.obj") != std::string::npos) {
+    springTris.clear();
+    for (size_t i = 0; i < model.hostIndices.size(); i += 3) {
+      auto &V = model.hostVertices;
+      uint32_t i0 = model.hostIndices[i + 0];
+      uint32_t i1 = model.hostIndices[i + 1];
+      uint32_t i2 = model.hostIndices[i + 2];
+      springTris.push_back({ V[i0].pos, V[i1].pos, V[i2].pos });
+    }
+  }
+
+  if (filename.find("shield.obj") != std::string::npos) {
+    shieldTris.clear();
+    for (size_t i = 0; i < model.hostIndices.size(); i += 3) {
+      auto &V = model.hostVertices;
+      uint32_t i0 = model.hostIndices[i + 0];
+      uint32_t i1 = model.hostIndices[i + 1]; 
+      uint32_t i2 = model.hostIndices[i + 2]; 
+      shieldTris.push_back({ V[i0].pos, V[i1].pos, V[i2].pos });
+    }
+  }
+
+  if (filename.find("fan.obj") != std::string::npos) {
+    fanTris.clear();
+    for (size_t i = 0; i < model.hostIndices.size(); i += 3) {
+      auto &V = model.hostVertices;
+      uint32_t i0 = model.hostIndices[i + 0];
+      uint32_t i1 = model.hostIndices[i + 1]; 
+      uint32_t i2 = model.hostIndices[i + 2]; 
+      fanTris.push_back({ V[i0].pos, V[i1].pos, V[i2].pos });
+    }
+  } 
+
+
   // Create the buffers on Device and copy vertices, indices and materials
   nvvk::CommandPool  cmdBufGet(m_device, m_graphicsQueueIndex);
   VkCommandBuffer    cmdBuf          = cmdBufGet.createCommandBuffer();

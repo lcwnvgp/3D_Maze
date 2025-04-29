@@ -74,6 +74,9 @@ public:
 
   struct Triangle { glm::vec3 a, b, c; };
   std::vector<Triangle> mazeTris;
+  std::vector<Triangle> springTris;
+  std::vector<Triangle> shieldTris;
+  std::vector<Triangle> fanTris;
 
   // Information pushed at each draw call
   PushConstantRaster m_pcRaster{
