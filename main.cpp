@@ -405,10 +405,10 @@ int main(int argc, char** argv)
         ballVel = vN_new + vT_new;
       }
 
-      std::cout<<"next:"<<glm::to_string(next)<<std::endl;  
+      // std::cout<<"next:"<<glm::to_string(next)<<std::endl;  
       // spring collision
-      std::cout<<"springStart:"<<glm::to_string(springStart)<<std::endl;
-      std::cout<<"length spring:"<<glm::length(next - springStart)<<std::endl;  
+      // std::cout<<"springStart:"<<glm::to_string(springStart)<<std::endl;
+      // std::cout<<"length spring:"<<glm::length(next - springStart)<<std::endl;  
       if(glm::length(next - springStart) < 10.0f) {
       for(auto &tri : helloVk.springTris){
         glm::vec3 A=glm::vec3(R*glm::vec4(tri.a,1));
@@ -429,8 +429,8 @@ int main(int argc, char** argv)
       }
       
       // shield collision
-      std::cout<<"shieldStart:"<<glm::to_string(shieldStart)<<std::endl;
-      std::cout<<"length shield:"<<glm::length(next - shieldStart)<<std::endl;  
+      // std::cout<<"shieldStart:"<<glm::to_string(shieldStart)<<std::endl;
+      // std::cout<<"length shield:"<<glm::length(next - shieldStart)<<std::endl;  
       if(glm::length(next - shieldStart) < 3.0f) {
       for(auto &tri : helloVk.shieldTris){
         glm::vec3 A=glm::vec3(R*glm::vec4(tri.a,1));
@@ -451,8 +451,8 @@ int main(int argc, char** argv)
       }
       
       // fan collision
-      std::cout<<"fanStart:"<<glm::to_string(fanStart)<<std::endl;
-      std::cout<<"length fan:"<<glm::length(next - fanStart)<<std::endl;  
+      // std::cout<<"fanStart:"<<glm::to_string(fanStart)<<std::endl;
+      // std::cout<<"length fan:"<<glm::length(next - fanStart)<<std::endl;  
       if(glm::length(next - fanStart) < 3.0f) {
       for(auto &tri : helloVk.fanTris){
         glm::vec3 A=glm::vec3(R*glm::vec4(tri.a,1));
