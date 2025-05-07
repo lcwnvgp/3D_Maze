@@ -365,20 +365,10 @@ int main(int argc, char** argv)
       bool collided = false;
       glm::vec3 contactN(0.0f);
       float penetration = 0.0f;
-      for(auto& tri : helloVk.mazeTris) {
-        glm::vec3 A = glm::vec3(R * glm::vec4(tri.a, 1.0f));
-        glm::vec3 B = glm::vec3(R * glm::vec4(tri.b, 1.0f));
-        glm::vec3 C = glm::vec3(R * glm::vec4(tri.c, 1.0f));
-        glm::vec3 p = helloVk.closestPointTriangle(next, A, B, C);
-        glm::vec3 diff = next - p;
-        float dist2 = glm::dot(diff, diff);
-        if(dist2 < ballRadius * ballRadius) {
-          float dist = std::sqrt(dist2);
-          contactN    = (dist > 1e-6f ? diff / dist : glm::vec3(0,1,0));
-          penetration = ballRadius - dist;
-          collided    = true;
-          break;
-        }
+      
+      // 使用BVH进行碰撞检测
+      if(helloVk.mazeBVH.intersect(next, ballRadius, contactN, penetration)) {
+        collided = true;
       }
 
       if(collided) {
@@ -405,71 +395,37 @@ int main(int argc, char** argv)
         ballVel = vN_new + vT_new;
       }
 
-      // std::cout<<"next:"<<glm::to_string(next)<<std::endl;  
       // spring collision
-      // std::cout<<"springStart:"<<glm::to_string(springStart)<<std::endl;
-      // std::cout<<"length spring:"<<glm::length(next - springStart)<<std::endl;  
       if(glm::length(next - springStart) < 10.0f) {
-      for(auto &tri : helloVk.springTris){
-        glm::vec3 A=glm::vec3(R*glm::vec4(tri.a,1));
-        glm::vec3 B=glm::vec3(R*glm::vec4(tri.b,1));
-        glm::vec3 C=glm::vec3(R*glm::vec4(tri.c,1));
-        glm::vec3 p=helloVk.closestPointTriangle(next,A,B,C);
-        glm::vec3 diff=next-p; float d2=glm::dot(diff,diff);
-        if(d2<ballRadius*ballRadius){
-          float d=std::sqrt(d2);
-          glm::vec3 n=(d>1e-6f?diff/d:glm::vec3(0,1,0));
-          next += n*(ballRadius - d);
-          glm::vec3 vN=glm::dot(ballVel,n)*n;
-          glm::vec3 vT=ballVel-vN;
-          ballVel = -e*vN + (1.0f-μ)*vT;
-          break;
+        if(helloVk.springBVH.intersect(next, ballRadius, contactN, penetration)) {
+          next += contactN * penetration;
+          glm::vec3 n = contactN;
+          glm::vec3 vN = glm::dot(ballVel, n) * n;
+          glm::vec3 vT = ballVel - vN;
+          ballVel = -e * vN + (1.0f-μ) * vT;
         }
-      }
       }
       
       // shield collision
-      // std::cout<<"shieldStart:"<<glm::to_string(shieldStart)<<std::endl;
-      // std::cout<<"length shield:"<<glm::length(next - shieldStart)<<std::endl;  
       if(glm::length(next - shieldStart) < 3.0f) {
-      for(auto &tri : helloVk.shieldTris){
-        glm::vec3 A=glm::vec3(R*glm::vec4(tri.a,1));
-        glm::vec3 B=glm::vec3(R*glm::vec4(tri.b,1));
-        glm::vec3 C=glm::vec3(R*glm::vec4(tri.c,1));
-        glm::vec3 p=helloVk.closestPointTriangle(next,A,B,C);
-        glm::vec3 diff=next-p; float d2=glm::dot(diff,diff);
-        if(d2<ballRadius*ballRadius){
-          float d=std::sqrt(d2);
-          glm::vec3 n=(d>1e-6f?diff/d:glm::vec3(0,1,0));
-          next += n*(ballRadius - d);
-          glm::vec3 vN=glm::dot(ballVel,n)*n;
-          glm::vec3 vT=ballVel-vN;
-          ballVel = -e*vN + (1.0f-μ)*vT;
-          break;    
+        if(helloVk.shieldBVH.intersect(next, ballRadius, contactN, penetration)) {
+          next += contactN * penetration;
+          glm::vec3 n = contactN;
+          glm::vec3 vN = glm::dot(ballVel, n) * n;
+          glm::vec3 vT = ballVel - vN;
+          ballVel = -e * vN + (1.0f-μ) * vT;
         }
-      }
       }
       
       // fan collision
-      // std::cout<<"fanStart:"<<glm::to_string(fanStart)<<std::endl;
-      // std::cout<<"length fan:"<<glm::length(next - fanStart)<<std::endl;  
       if(glm::length(next - fanStart) < 3.0f) {
-      for(auto &tri : helloVk.fanTris){
-        glm::vec3 A=glm::vec3(R*glm::vec4(tri.a,1));
-        glm::vec3 B=glm::vec3(R*glm::vec4(tri.b,1));
-        glm::vec3 C=glm::vec3(R*glm::vec4(tri.c,1));
-        glm::vec3 p=helloVk.closestPointTriangle(next,A,B,C);
-        glm::vec3 diff=next-p; float d2=glm::dot(diff,diff);
-        if(d2<ballRadius*ballRadius){
-          float d=std::sqrt(d2);
-          glm::vec3 n=(d>1e-6f?diff/d:glm::vec3(0,1,0));
-          next += n*(ballRadius - d);
-          glm::vec3 vN=glm::dot(ballVel,n)*n;
-          glm::vec3 vT=ballVel-vN;
-          ballVel = -e*vN + (1.0f-μ)*vT;
-          break;
+        if(helloVk.fanBVH.intersect(next, ballRadius, contactN, penetration)) {
+          next += contactN * penetration;
+          glm::vec3 n = contactN;
+          glm::vec3 vN = glm::dot(ballVel, n) * n;
+          glm::vec3 vT = ballVel - vN;
+          ballVel = -e * vN + (1.0f-μ) * vT;
         }
-      }
       }
 
       ballPos = next;
