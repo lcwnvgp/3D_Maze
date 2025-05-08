@@ -41,6 +41,7 @@
 #include "nvpsystem.hpp"
 #include "nvvk/commands_vk.hpp"
 #include "nvvk/context_vk.hpp"
+#include "physicsUtil.h"
 
 
 //////////////////////////////////////////////////////////////////////////
@@ -220,8 +221,12 @@ int main(int argc, char** argv)
   const float heightOff  = 2.0f; 
 
   glm::vec3 ballPos = ballStart;
+  glm::quat ballRotation = glm::quat(1.0f, 0.0f, 0.0f, 0.0f);
   glm::vec3 ballVel = {0.0f,0.0f,0.0f};
+  glm::vec3 rotateAxis = {1.0f,0.0f,0.0f};
+  glm::vec3 rotateVel = {0.0f,0.0f,0.0f};
   float     ballRadius   = 1.744f;
+  float ballMass = 1;
   const glm::vec3 GRAV = {0.0f,-9.81f,0.0f};
   const float μ = 0.05f;        
   const float e = 0.15f;        
@@ -382,17 +387,19 @@ int main(int argc, char** argv)
         glm::vec3 gT = GRAV - gN;
         // tangential
         glm::vec3 vT = ballVel - glm::dot(ballVel, n) * n;
-        // tangential acceleration
-        glm::vec3 aT = gT - μ * vT;
-        // tangential velocity
-        vT += aT * subDt;
-        // normal velocity
-        glm::vec3 vN = glm::dot(ballVel, n) * n;
-        // normal velocity new
-        glm::vec3 vN_new = -e * vN;
-        // tangential velocity new
-        glm::vec3 vT_new = vT;
-        ballVel = vN_new + vT_new;
+        if (std::abs(glm::dot(ballVel, n)) < 1e-3) {
+            // tangential acceleration
+            glm::vec3 aT = gT - μ * vT;
+            // tangential velocity
+            vT += aT * subDt;
+            glm::vec3 vN = glm::dot(ballVel, n) * n;
+            ballVel = vN + vT;
+            rotateAxis = glm::normalize(glm::cross(vT, normals[i]));
+            rotateVel = vT;
+        } else {
+            float impulse = calculateImpulse(-1, ballMass, glm::vec3(0.), ballVel, n);
+            ballVel += impulse * n / ballMass;
+        }
       }
 
       // spring collision
@@ -427,10 +434,14 @@ int main(int argc, char** argv)
           ballVel = -e * vN + (1.0f-μ) * vT;
         }
       }
-
+      float theta = glm::length(rotateVel * subDt) / ballRadius;
+      glm::quat rotationQuat = glm::angleAxis(theta, rotateAxis);
+      ballRotation = rotationQuat * ballRotation;
       ballPos = next;
     }
-    helloVk.m_instances[1].transform = glm::translate(glm::mat4(1.0f), ballPos) * glm::scale(glm::mat4(1.0f), glm::vec3(1.0f));
+    helloVk.m_instances[1].transform =
+            glm::translate(glm::mat4(1.0f), ballPos) *
+            glm::mat4_cast(ballRotation);
 
     // bool spacePressed = (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS);
     // if (spacePressed && !spaceWasPressed) {
