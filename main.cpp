@@ -152,7 +152,7 @@ int main(int argc, char** argv)
   const float heightOff  = 2.0f; 
 
   glm::vec3 ballPos = ballStart;
-  glm::quat ballRotation = glm::quat(1.0f, 0.0f, 0.0f, 0.0f)
+  glm::quat ballRotation = glm::quat(1.0f, 0.0f, 0.0f, 0.0f);
   glm::vec3 ballVel = {0.0f,0.0f,0.0f};
   glm::vec3 rotateAxis = {1.0f,0.0f,0.0f};
   glm::vec3 rotateVel = {0.0f,0.0f,0.0f};
@@ -290,45 +290,45 @@ int main(int argc, char** argv)
 
       glm::vec3 next = ballPos + ballVel * subDt;
 
-      bool collided = false;
-      glm::vec3 contactN(0.0f);
-      float penetration = 0.0f;
-      for(auto& tri : mazeVk.mazeTris) {
-        glm::vec3 A = glm::vec3(R * glm::vec4(tri.a, 1.0f));
-        glm::vec3 B = glm::vec3(R * glm::vec4(tri.b, 1.0f));
-        glm::vec3 C = glm::vec3(R * glm::vec4(tri.c, 1.0f));
-        glm::vec3 p = mazeVk.closestPointTriangle(next, A, B, C);
-        glm::vec3 diff = next - p;
-        float dist2 = glm::dot(diff, diff);
-        if(dist2 < ballRadius * ballRadius) {
-          float dist = std::sqrt(dist2);
-          contactN    = (dist > 1e-6f ? diff / dist : glm::vec3(0,1,0));
-          penetration = ballRadius - dist;
-          collided    = true;
-          break;
-        }
-      }
-
-      if(collided) {
-        next += contactN * penetration;
-
-        glm::vec3 n = contactN;
-        glm::vec3 gN = glm::dot(GRAV, n) * n;
-        glm::vec3 gT = GRAV - gN;
-        glm::vec3 vT = ballVel - glm::dot(ballVel, n) * n;
-          if (std::abs(glm::dot(ballVel, n)) < 1e-3) {
-              // tangential acceleration
-              glm::vec3 aT = gT - μ * vT;
-              // tangential velocity
-              vT += aT * subDt;
-              glm::vec3 vN = glm::dot(ballVel, n) * n;
-              ballVel = vN + vT;
-              rotateAxis = glm::normalize(glm::cross(vT, normals[i]));
-              rotateVel = vT;
-          } else {
-              float impulse = calculateImpulse(-1, ballMass, glm::vec3(0.), ballVel, n);
-              ballVel += impulse * n / ballMass;
+      if (mazeVk.intersectBVH(next, ballRadius, R)) {
+        bool collided = false;
+        glm::vec3 contactN(0.0f);
+        float penetration = 0.0f;
+        for(auto& tri : mazeVk.mazeTris) {
+          glm::vec3 A = glm::vec3(R * glm::vec4(tri.a, 1.0f));
+          glm::vec3 B = glm::vec3(R * glm::vec4(tri.b, 1.0f));
+          glm::vec3 C = glm::vec3(R * glm::vec4(tri.c, 1.0f));
+          glm::vec3 p = mazeVk.closestPointTriangle(next, A, B, C);
+          glm::vec3 diff = next - p;
+          float dist2 = glm::dot(diff, diff);
+          if(dist2 < ballRadius * ballRadius) {
+            float dist = std::sqrt(dist2);
+            contactN    = (dist > 1e-6f ? diff / dist : glm::vec3(0,1,0));
+            penetration = ballRadius - dist;
+            collided    = true;
+            break;
           }
+        }
+
+        if(collided) {
+          next += contactN * penetration;
+
+          glm::vec3 n = contactN;
+          glm::vec3 gN = glm::dot(GRAV, n) * n;
+          glm::vec3 gT = GRAV - gN;
+          glm::vec3 vT = ballVel - glm::dot(ballVel, n) * n;
+          if (std::abs(glm::dot(ballVel, n)) < 1e-3) {
+            glm::vec3 aT = gT - μ * vT;
+            vT += aT * subDt;
+            glm::vec3 vN = glm::dot(ballVel, n) * n;
+            ballVel = vN + vT;
+            rotateAxis = glm::normalize(glm::cross(vT, n));
+            rotateVel = vT;
+          } else {
+            float impulse = calculateImpulse(-1, ballMass, glm::vec3(0.), ballVel, n);
+            ballVel += impulse * n / ballMass;
+          }
+        }
       }
 
       if(glm::length(next - springStart) < 3.0f) {

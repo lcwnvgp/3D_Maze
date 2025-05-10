@@ -13,8 +13,8 @@
 float calculateImpulse(
         float massA, float massB,
         const glm::vec3& velocityA, const glm::vec3& velocityB,
-        const glm::vec3& normal, // normal pointing from A to B
-        float restitution = 1f // coefficient of restitution, 1 = elastic, 0 = inelastic
+        const glm::vec3& normal, 
+        float restitution = 1.0f // coefficient of restitution, 1 = elastic, 0 = inelastic
 );
 
 
@@ -80,6 +80,67 @@ public:
   };
 
   struct Triangle { glm::vec3 a, b, c; };
+  
+  struct AABB {
+    glm::vec3 min;
+    glm::vec3 max;
+    
+    AABB() : min(glm::vec3(FLT_MAX)), max(glm::vec3(-FLT_MAX)) {}
+    
+    void expand(const glm::vec3& point) {
+      min = glm::min(min, point);
+      max = glm::max(max, point);
+    }
+    
+    void expand(const AABB& other) {
+      min = glm::min(min, other.min);
+      max = glm::max(max, other.max);
+    }
+    
+    bool contains(const glm::vec3& point) const {
+      return point.x >= min.x && point.x <= max.x &&
+             point.y >= min.y && point.y <= max.y &&
+             point.z >= min.z && point.z <= max.z;
+    }
+    
+    bool intersects(const AABB& other) const {
+      return !(max.x < other.min.x || min.x > other.max.x ||
+               max.y < other.min.y || min.y > other.max.y ||
+               max.z < other.min.z || min.z > other.max.z);
+    }
+    
+    float surfaceArea() const {
+      glm::vec3 d = max - min;
+      return 2.0f * (d.x * d.y + d.y * d.z + d.z * d.x);
+    }
+  };
+  
+  struct BVHNode {
+    AABB bounds;
+    int leftChild;  
+    int rightChild; 
+    int firstPrimitive; 
+    int primitiveCount; 
+    
+    bool isLeaf() const { return primitiveCount > 0; }
+  };
+  
+
+  struct Primitive {
+    Triangle triangle;
+    int meshIndex;  
+  };
+  
+  std::vector<BVHNode> bvhNodes;
+  std::vector<Primitive> primitives;
+  int rootNodeIndex;
+  
+  void buildBVH();
+  int createBVHNode(int firstPrimitive, int primitiveCount);
+  void subdivideNode(int nodeIndex);
+  void updateNodeBounds(int nodeIndex);
+  bool intersectBVH(const glm::vec3& center, float radius, const glm::mat4& transform);
+  
   std::vector<Triangle> mazeTris;
   std::vector<Triangle> springTris;
   std::vector<Triangle> shieldTris;

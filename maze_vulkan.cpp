@@ -152,6 +152,7 @@ void MazeVulkan::loadModel(const std::string& filename, glm::mat4 transform)
       uint32_t i2 = model.hostIndices[i + 2];
       mazeTris.push_back({ V[i0].pos, V[i1].pos, V[i2].pos });
     }
+    buildBVH();
   }
 
   if (filename.find("spring.obj") != std::string::npos) {
@@ -310,6 +311,9 @@ void MazeVulkan::createTextureImages(const VkCommandBuffer& cmdBuf, const std::v
 
 void MazeVulkan::destroyResources()
 {
+  bvhNodes.clear();
+  primitives.clear();
+  
   vkDestroyPipeline(m_device, m_graphicsPipeline, nullptr);
   vkDestroyPipelineLayout(m_device, m_pipelineLayout, nullptr);
   vkDestroyDescriptorPool(m_device, m_descPool, nullptr);
@@ -822,21 +826,25 @@ glm::vec3 MazeVulkan::closestPointTriangle(const glm::vec3& P, const glm::vec3& 
 void MazeVulkan::handleCollision(const glm::vec3& next, const glm::mat4& transform, glm::vec3& ballPos, glm::vec3& ballVel, 
                                 float ballRadius, const std::vector<Triangle>& triangles, float restitution, float friction)
 {
-  for(auto &tri : triangles) {
-    glm::vec3 A = glm::vec3(transform * glm::vec4(tri.a, 1));
-    glm::vec3 B = glm::vec3(transform * glm::vec4(tri.b, 1));
-    glm::vec3 C = glm::vec3(transform * glm::vec4(tri.c, 1));
-    glm::vec3 p = closestPointTriangle(next, A, B, C);
-    glm::vec3 diff = next - p;
-    float d2 = glm::dot(diff, diff);
-    if(d2 < ballRadius * ballRadius) {
-      float d = std::sqrt(d2);
-      glm::vec3 n = (d > 1e-6f ? diff/d : glm::vec3(0,1,0));
-      ballPos = p + n * ballRadius;
-      glm::vec3 vN = glm::dot(ballVel, n) * n;
-      glm::vec3 vT = ballVel - vN;
-      ballVel = -restitution * vN + (1.0f - friction) * vT;
-      break;
+
+  if (intersectBVH(next, ballRadius, transform)) {
+
+    for(auto &tri : triangles) {
+      glm::vec3 A = glm::vec3(transform * glm::vec4(tri.a, 1));
+      glm::vec3 B = glm::vec3(transform * glm::vec4(tri.b, 1));
+      glm::vec3 C = glm::vec3(transform * glm::vec4(tri.c, 1));
+      glm::vec3 p = closestPointTriangle(next, A, B, C);
+      glm::vec3 diff = next - p;
+      float d2 = glm::dot(diff, diff);
+      if(d2 < ballRadius * ballRadius) {
+        float d = std::sqrt(d2);
+        glm::vec3 n = (d > 1e-6f ? diff/d : glm::vec3(0,1,0));
+        ballPos = p + n * ballRadius;
+        glm::vec3 vN = glm::dot(ballVel, n) * n;
+        glm::vec3 vT = ballVel - vN;
+        ballVel = -restitution * vN + (1.0f - friction) * vT;
+        break;
+      }
     }
   }
 }
@@ -860,4 +868,140 @@ float calculateImpulse(
     impulseScalar /= invMassA + invMassB;
 
     return impulseScalar;
+}
+
+void MazeVulkan::buildBVH() {
+
+    bvhNodes.clear();
+    primitives.clear();
+    
+
+    for (size_t i = 0; i < mazeTris.size(); i++) {
+        Primitive prim;
+        prim.triangle = mazeTris[i];
+        prim.meshIndex = 0; 
+        primitives.push_back(prim);
+    }
+    
+
+    rootNodeIndex = createBVHNode(0, primitives.size());
+    
+
+    subdivideNode(rootNodeIndex);
+}
+
+int MazeVulkan::createBVHNode(int firstPrimitive, int primitiveCount) {
+    BVHNode node;
+    node.firstPrimitive = firstPrimitive;
+    node.primitiveCount = primitiveCount;
+    node.leftChild = -1;
+    node.rightChild = -1;
+    
+    updateNodeBounds(bvhNodes.size());
+    
+    bvhNodes.push_back(node);
+    return bvhNodes.size() - 1;
+}
+
+void MazeVulkan::updateNodeBounds(int nodeIndex) {
+    BVHNode& node = bvhNodes[nodeIndex];
+    node.bounds = AABB();
+    
+    for (int i = 0; i < node.primitiveCount; i++) {
+        const Triangle& tri = primitives[node.firstPrimitive + i].triangle;
+        node.bounds.expand(tri.a);
+        node.bounds.expand(tri.b);
+        node.bounds.expand(tri.c);
+    }
+}
+
+void MazeVulkan::subdivideNode(int nodeIndex) {
+    BVHNode& node = bvhNodes[nodeIndex];
+    
+    if (node.primitiveCount <= 2) {
+        return;
+    }
+    
+
+    std::vector<glm::vec3> centers(node.primitiveCount);
+    glm::vec3 center(0.0f);
+    for (int i = 0; i < node.primitiveCount; i++) {
+        const Triangle& tri = primitives[node.firstPrimitive + i].triangle;
+        centers[i] = (tri.a + tri.b + tri.c) / 3.0f;
+        center += centers[i];
+    }
+    center /= float(node.primitiveCount);
+    
+
+    glm::vec3 variance(0.0f);
+    for (int i = 0; i < node.primitiveCount; i++) {
+        glm::vec3 diff = centers[i] - center;
+        variance += diff * diff;
+    }
+    
+    int axis = 0;
+    if (variance.y > variance.x) axis = 1;
+    if (variance.z > variance[axis]) axis = 2;
+    
+    std::sort(primitives.begin() + node.firstPrimitive,
+              primitives.begin() + node.firstPrimitive + node.primitiveCount,
+              [&](const Primitive& a, const Primitive& b) {
+                  glm::vec3 centerA = (a.triangle.a + a.triangle.b + a.triangle.c) / 3.0f;
+                  glm::vec3 centerB = (b.triangle.a + b.triangle.b + b.triangle.c) / 3.0f;
+                  return centerA[axis] < centerB[axis];
+              });
+    
+
+    int mid = node.primitiveCount / 2;
+    node.leftChild = createBVHNode(node.firstPrimitive, mid);
+    node.rightChild = createBVHNode(node.firstPrimitive + mid, node.primitiveCount - mid);
+    
+
+    subdivideNode(node.leftChild);
+    subdivideNode(node.rightChild);
+}
+
+bool MazeVulkan::intersectBVH(const glm::vec3& center, float radius, const glm::mat4& transform) {
+
+    AABB sphereBounds;
+    sphereBounds.min = center - glm::vec3(radius);
+    sphereBounds.max = center + glm::vec3(radius);
+    
+
+    std::vector<int> stack;
+    stack.push_back(rootNodeIndex);
+    
+    while (!stack.empty()) {
+        int nodeIndex = stack.back();
+        stack.pop_back();
+        
+        const BVHNode& node = bvhNodes[nodeIndex];
+        
+
+        if (!sphereBounds.intersects(node.bounds)) {
+            continue;
+        }
+        
+        if (node.isLeaf()) {
+
+            for (int i = 0; i < node.primitiveCount; i++) {
+                const Triangle& tri = primitives[node.firstPrimitive + i].triangle;
+                glm::vec3 A = glm::vec3(transform * glm::vec4(tri.a, 1.0f));
+                glm::vec3 B = glm::vec3(transform * glm::vec4(tri.b, 1.0f));
+                glm::vec3 C = glm::vec3(transform * glm::vec4(tri.c, 1.0f));
+                
+                glm::vec3 p = closestPointTriangle(center, A, B, C);
+                float dist2 = glm::dot(center - p, center - p);
+                
+                if (dist2 < radius * radius) {
+                    return true;
+                }
+            }
+        } else {
+            stack.push_back(node.leftChild);
+            stack.push_back(node.rightChild);
+        }
+    }
+    
+    return false;
 }
