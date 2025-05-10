@@ -152,8 +152,12 @@ int main(int argc, char** argv)
   const float heightOff  = 2.0f; 
 
   glm::vec3 ballPos = ballStart;
+  glm::quat ballRotation = glm::quat(1.0f, 0.0f, 0.0f, 0.0f)
   glm::vec3 ballVel = {0.0f,0.0f,0.0f};
+  glm::vec3 rotateAxis = {1.0f,0.0f,0.0f};
+  glm::vec3 rotateVel = {0.0f,0.0f,0.0f};
   float     ballRadius   = 1.744f;
+  float ballMass = 1;
   const glm::vec3 GRAV = {0.0f,-9.81f,0.0f};
   const float μ = 0.05f;        
   const float e = 0.15f;        
@@ -312,12 +316,19 @@ int main(int argc, char** argv)
         glm::vec3 gN = glm::dot(GRAV, n) * n;
         glm::vec3 gT = GRAV - gN;
         glm::vec3 vT = ballVel - glm::dot(ballVel, n) * n;
-        glm::vec3 aT = gT - μ * vT;
-        vT += aT * subDt;
-        glm::vec3 vN = glm::dot(ballVel, n) * n;
-        glm::vec3 vN_new = -e * vN;
-        glm::vec3 vT_new = vT;
-        ballVel = vN_new + vT_new;
+          if (std::abs(glm::dot(ballVel, n)) < 1e-3) {
+              // tangential acceleration
+              glm::vec3 aT = gT - μ * vT;
+              // tangential velocity
+              vT += aT * subDt;
+              glm::vec3 vN = glm::dot(ballVel, n) * n;
+              ballVel = vN + vT;
+              rotateAxis = glm::normalize(glm::cross(vT, normals[i]));
+              rotateVel = vT;
+          } else {
+              float impulse = calculateImpulse(-1, ballMass, glm::vec3(0.), ballVel, n);
+              ballVel += impulse * n / ballMass;
+          }
       }
 
       if(glm::length(next - springStart) < 3.0f) {
@@ -332,9 +343,14 @@ int main(int argc, char** argv)
         mazeVk.handleCollision(next, R, ballPos, ballVel, ballRadius, mazeVk.fanTris, 0.15f, 0.05f);
       }
 
+      float theta = glm::length(rotateVel * subDt) / ballRadius;
+      glm::quat rotationQuat = glm::angleAxis(theta, rotateAxis);
+      ballRotation = rotationQuat * ballRotation;
       ballPos = next;
     }
-    mazeVk.m_instances[1].transform = glm::translate(glm::mat4(1.0f), ballPos) * glm::scale(glm::mat4(1.0f), glm::vec3(1.0f));
+    mazeVk.m_instances[1].transform =
+            glm::translate(glm::mat4(1.0f), ballPos) *
+            glm::mat4_cast(ballRotation);
 
     mazeVk.createObjDescriptionBuffer();
     mazeVk.updateDescriptorSet();

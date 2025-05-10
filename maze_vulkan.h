@@ -6,6 +6,17 @@
 #include <vulkan/vulkan.hpp>
 #include "shaders/host_device.h"
 #include "obj_loader.h"
+#include <vector>
+#include <algorithm>
+#include <glm/glm.hpp>
+
+float calculateImpulse(
+        float massA, float massB,
+        const glm::vec3& velocityA, const glm::vec3& velocityB,
+        const glm::vec3& normal, // normal pointing from A to B
+        float restitution = 1f // coefficient of restitution, 1 = elastic, 0 = inelastic
+);
+
 
 class AppBase {
 public:
