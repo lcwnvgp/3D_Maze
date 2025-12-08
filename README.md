@@ -1,19 +1,60 @@
-This project is a 3D maze puzzle game where players control a rolling ball to navigate through a visually rich and interactive maze environment. Built using pure C++ and Vulkan, the game features:
+3D Maze Puzzle Game (C++ / Vulkan)
 
-  Real-time ray tracing for accurate lighting and reflections
-  
-  A custom-built physics engine for realistic ball movement
-  
-  Interactive elements such as bounce pads, wind zones, and mirror puzzles
-  
-  Maze and sphere models created with Blender
-  
-  Puzzle mechanics that combine physics with logic and spatial reasoning
+This project is a 3D maze puzzle game where players control a rolling ball navigating through a visually rich and interactive environment. Built entirely with pure C++ and Vulkan, the game serves as both a technical graphics showcase and a creative gameplay experiment.
 
-The game aims to blend technical graphics programming with creative gameplay design.
+🎥 Demo Video
 
-
-<img width="1941" height="1638" alt="4e052276-9eff-4faf-aebf-bbc044487422" src="https://github.com/user-attachments/assets/0773457d-5f10-4773-8142-f89fc98faccd" />
-
-demo video:
+Watch the gameplay showcase here:
 https://youtu.be/RMKlik5Wq8c
+
+✨ Key Features
+🔦 Real-Time Ray Tracing
+
+Implemented with Vulkan ray tracing extensions.
+
+Accurate reflections, soft shadows, and physically based lighting.
+
+Custom BVH acceleration structure generation.
+
+🧊 Custom Physics Engine
+
+Rigid body simulation for smooth and realistic ball movement.
+
+Collision detection with maze walls and interactive objects.
+
+Forces such as friction, gravity, and impulse responses.
+
+🧩 Interactive Gameplay Elements
+
+Bounce Pads that launch the ball with configurable impulse strength.
+
+Wind Zones that push the ball dynamically based on direction and intensity.
+
+Mirror Surfaces used in ray tracing puzzles where light paths must be manipulated.
+
+Physics-driven puzzle mechanics integrating timing, angles, and spatial reasoning.
+
+🏗️ Asset Creation & Rendering
+
+Maze and sphere models created using Blender.
+
+Physically based shading, texture mapping, shadow computation, and dynamic environment lighting.
+
+🎮 Puzzle Design
+
+A blend of physics-based interactions and logic puzzles.
+
+Requires spatial understanding, timing control, and environmental awareness.
+
+🧾 Project Goals
+
+This project aims to combine:
+
+Low-level graphics programming
+
+Real-time rendering research
+
+Physics simulation
+
+Gameplay and puzzle design
+to create a cohesive and technically impressive interactive experience.
